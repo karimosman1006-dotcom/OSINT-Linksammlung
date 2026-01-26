@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linksammlung by C.G.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-dark: #0f172a;
+            --secondary-dark: #1e293b;
+            --accent-blue: #3b82f6;
+            --accent-light: #60a5fa;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 50%, #1e3a8a 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+            animation: gradientShift 15s ease infinite;
+            background-size: 400% 400%;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .login-box {
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        
+        .login-box h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+        
+        .login-box p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-dark);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .password-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-light));
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.5);
+        }
+        
+        .error-message {
+            color: #ef4444;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        
+        .main-container {
+            display: none;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid var(--accent-blue);
+            border-radius: 12px;
+            padding: 15px 25px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 20px;
+            background: rgba(30, 41, 59, 0.95);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            color: var(--text-primary);
+            font-size: 18px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(20px);
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+        
+        .category-card {
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.3);
+        }
+        
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .category-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        
+        .category-count {
+            background: var(--accent-blue);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .category-count.search-active {
+            background: var(--accent-light);
+            animation: pulse 0.5s ease;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .links-container {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        .links-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .links-container::-webkit-scrollbar-track {
+            background: var(--primary-dark);
+            border-radius: 3px;
+        }
+        
+        .links-container::-webkit-scrollbar-thumb {
+            background: var(--accent-blue);
+            border-radius: 3px;
+        }
+        
+        .link-item {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .link-item:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: var(--accent-blue);
+            transform: translateX(5px);
+        }
+        
+        .link-item a {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05em;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .link-item a:hover {
+            color: var(--text-primary);
+            text-decoration: underline;
+        }
+        
+        .link-url {
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            word-break: break-all;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 60px;
+            background: rgba(30, 41, 59, 0.95);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+        
+        @media (max-width: 768px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container" id="loginScreen">
+        <div class="login-box">
+            <h1>Linksammlung</h1>
+            <p>by C.G.</p>
+            <input type="password" id="passwordInput" class="password-input" placeholder="Passwort eingeben..." autocomplete="off">
+            <button onclick="checkPassword()" class="login-btn">Zugriff gewÃ¤hren</button>
+            <div id="errorMessage" class="error-message"></div>
+        </div>
+    </div>
+
+    <div class="main-container" id="mainContent">
+        <div class="header">
+            <h1>Linksammlung by C.G.</h1>
+            <p>Modernisierte OSINT & Recherche-Tools</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">1250</div>
+                    <div class="stat-label">Gesamte Links</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">111</div>
+                    <div class="stat-label">Kategorien</div>
+                </div>
+            </div>
+        </div>
+
+        <input type="text" id="searchBox" class="search-box" placeholder="Links durchsuchen..." oninput="filterLinks()">
+
+        <div class="categories-grid" id="categoriesGrid">
+            <!-- Kategorien werden via JavaScript geladen -->
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (password.trim() === 'LinkOS') {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('mainContent').style.display = 'block';
+                document.body.style.overflow = 'auto';
+                loadCategories();
+            } else {
+                errorMessage.textContent = 'Falsches Passwort. Bitte versuchen Sie es erneut.';
+                document.getElementById('passwordInput').value = '';
+                setTimeout(() => {
+                    errorMessage.textContent = '';
+                }, 3000);
+            }
+        }
+        
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+        
+        function loadCategories() {
+            const categories = [
+                { name: "", count: 2, links: [
+                    { title: "invid", url: "http://logos.iti.gr/logos/" },
+                    { title: "models", url: "https://huggingface.co/models?pipeline_tag=text-to-image&amp;amp;sort=downloads" },
+                ]},
+                { name: "Abat", count: 1, links: [
+                    { title: "abat online-salafismus - modus", url: "https://modus-zad.de/projekte/abat-online-salafismus/" },
+                ]},
+                { name: "Aktuell Nur Mit Anmeldung X", count: 1, links: [
+                    { title: "photo-map.ru", url: "http://photo-map.ru" },
+                ]},
+                { name: "Allgemeine Infos Zum Channel X", count: 1, links: [
+                    { title: "youtube channel id", url: "https://commentpicker.com/youtube-channel-id.php" },
+                ]},
+                { name: "Allgemeine Webseiten", count: 1, links: [
+                    { title: "save the video - free online video downloader", url: "https://savethevideo.net/" },
+                ]},
+                { name: "Allgemeines Y", count: 1, links: [
+                    { title: "osint investigations on tiktok - secjuice", url: "https://www.secjuice.com/osint-investigations-on-tiktok/" },
+                ]},
+                { name: "Analyse Eines Accounts  Einzelner A...", count: 10, links: [
+                    { title: "trendsmap", url: "https://www.trendsmap.com" },
+                    { title: "accountanalysis.app", url: "https://accountanalysis.app/" },
+                    { title: "twitonomy", url: "https://www.twitonomy.com/" },
+                    { title: "socialbearing", url: "https://socialbearing.com/" },
+                    { title: "sleeping time", url: "http://sleepingtime.org/" },
+                    { title: "twxplorer", url: "https://twxplorer.knightlab.com/" },
+                    { title: "twitter shadowban test (?)", url: "https://shadowban.eu" },
+                    { title: "foller.me", url: "https://foller.me" },
+                    { title: "check if account is likely a bot", url: "https://botometer.iuni.iu.edu" },
+                    { title: "twitter spot - suche nach einem wort in einer bestimmten zeit", url: "https://chrome.google.com/webstore/detail/twitter-spot/mphjjnefganljfihdjpbenbflokgjlcm/related" },
+                ]},
+                { name: "Andere Ans Tzex", count: 4, links: [
+                    { title: "stolen camera finder", url: "https://www.stolencamerafinder.com" },
+                    { title: "diff checker", url: "https://www.diffchecker.com/image-diff" },
+                    { title: "wie alt ist eine person (?)", url: "https://www.how-old.net" },
+                    { title: "logo detection (?)", url: "http://logos.iti.gr/" },
+                ]},
+                { name: "Andere Aufbereitung Der Tweets X", count: 1, links: [
+                    { title: "all my tweets", url: "https://www.allmytweets.net/" },
+                ]},
+                { name: "Andere Hilfsmittel", count: 7, links: [
+                    { title: "session buddy", url: "https://chrome.google.com/webstore/detail/session-buddy/edacconmaakjimmfgnblocblbcdcpbko?hl=en" },
+                    { title: "crowdtangle link checker", url: "https://chrome.google.com/webstore/detail/crowdtangle-link-checker/klakndphagmmfkpelfkgjbkimjihpmkh" },
+                    { title: "truly media", url: "https://chrome.google.com/webstore/detail/truly-media/nkgnebcoenckmflihkceknmglbkeiano" },
+                    { title: "mitaka", url: "https://chrome.google.com/webstore/detail/mitaka/bfjbejmeoibbdpfdbmbacmefcbannnbg" },
+                    { title: "onetab", url: "https://chrome.google.com/webstore/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall?utm_source=chrome-ntp-icon" },
+                    { title: "sputnik", url: "https://chrome.google.com/webstore/detail/sputnik/manapjdamopgbpimgojkccikaabhmocd?utm_source=chrome-ntp-icon" },
+                    { title: "storyful multisearch", url: "https://chrome.google.com/webstore/detail/storyful-multisearch/hkglibabhninbjmaccpajiakojeacnaf?hl=en" },
+                ]},
+                { name: "Anlegen Eines Accounts", count: 5, links: [
+                    { title: "https://muellmail.com", url: "https://muellmail.com/legal" },
+                    { title: "fake name generator", url: "https://www.fakenamegenerator.com/" },
+                    { title: "guerrilla mail", url: "https://www.guerrillamail.com/" },
+                    { title: "receive sms online", url: "https://www.receivesmsonline.net/" },
+                    { title: "photopea", url: "https://www.photopea.com/" },
+                ]},
+                { name: "Ansicht  Ndern", count: 3, links: [
+                    { title: "jsonovich", url: "https://addons.mozilla.org/en-us/firefox/addon/jsonovich/" },
+                    { title: "user-agent switcher", url: "https://addons.mozilla.org/en-us/firefox/addon/user-agent-switcher-revived/" },
+                    { title: "jsonview", url: "https://addons.mozilla.org/en-us/firefox/addon/jsonview/" },
+                ]},
+                { name: "Arabisch", count: 3, links: [
+                    { title: "ejtaal.net", url: "https://ejtaal.net/" },
+                    { title: "livingarabic.com", url: "https://livingarabic.com/" },
+                    { title: "yamli", url: "https://www.yamli.com/" },
+                ]},
+                { name: "Archiv", count: 2, links: [
+                    { title: "webpage archive", url: "https://archive.is/" },
+                    { title: "internet archive: digital library of free &amp;amp; borrowable books, movies, music &amp;amp; wayback machine", url: "https://archive.org/" },
+                ]},
+                { name: "Archive", count: 8, links: [
+                    { title: "internet archive: wayback machine", url: "https://archive.org/web" },
+                    { title: "archive.is", url: "https://archive.is" },
+                    { title: "internet archive: wayback machine", url: "https://archive.org/web" },
+                    { title: "archive.is", url: "https://archive.is" },
+                    { title: "internet archive: wayback machine", url: "https://archive.org/web" },
+                    { title: "archive.is", url: "https://archive.is" },
+                    { title: "archive.vn", url: "http://archive.vn/" },
+                    { title: "ghostarchive, a website archive", url: "https://ghostarchive.org/" },
+                ]},
+                { name: "Aufbau Von Webseiten", count: 1, links: [
+                    { title: "builtwith technology lookup", url: "https://builtwith.com/" },
+                ]},
+                { name: "Ausland", count: 2, links: [
+                    { title: "zefix", url: "https://www.zefix.ch/fr/search/entity/welcome" },
+                    { title: "useful apps copy tmp en", url: "https://www.molfar.global/en/useful-apps-registers" },
+                ]},
+                { name: "Backlinks", count: 6, links: [
+                    { title: "backlinks checker tool - backlink watch", url: "http://www.backlinkwatch.com/" },
+                    { title: "link explorer ξ 35 trillion backlink index + da checker - moz", url: "https://moz.com/link-explorer" },
+                    { title: "domain backlink analysis", url: "https://tools.seochat.com/tools/backlink-analysis" },
+                    { title: "free link analysis tool - link research", url: "https://openlinkprofiler.org/" },
+                    { title: "free backlink checker by ahrefs: check backlinks for any website", url: "https://ahrefs.com/de/backlink-checker" },
+                    { title: "free link analysis tool", url: "https://openlinkprofiler.org/" },
+                ]},
+                { name: "Barcode  Qr Code Reader", count: 3, links: [
+                    { title: "inlite barcode", url: "https://www.inliteresearch.com" },
+                    { title: "online barcode decoder", url: "https://online-barcode-reader.com" },
+                    { title: "work result (webqr.com)", url: "https://webqr.com" },
+                ]},
+                { name: "Barcode Reader", count: 3, links: [
+                    { title: "inlite barcode", url: "https://www.inliteresearch.com" },
+                    { title: "online barcode decoder", url: "https://online-barcode-reader.com" },
+                    { title: "work result (webqr.com)", url: "https://webqr.com" },
+                ]},
+                { name: "Bersetzung", count: 8, links: [
+                    { title: "google translate", url: "https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb" },
+                    { title: "deepl translator", url: "https://chrome.google.com/webstore/search/deepl" },
+                    { title: "i don&amp;#39;t care about cookies", url: "https://chrome.google.com/webstore/detail/i-dont-care-about-cookies/fihnjjcciajhdojfnbdddfaoknhalnja/related?hl=de" },
+                    { title: "mate translate – übersetzer, wörterbuch", url: "https://chromewebstore.google.com/detail/mate-translate-%e2%80%93-%c3%bcbersetz/ihmgiclibbndffejedjimfjmfoabpcke?hl=de" },
+                    { title: "deepl for browser", url: "https://addons.mozilla.org/en-us/firefox/addon/deepl/?src=search" },
+                    { title: "google translator", url: "https://addons.mozilla.org/en-us/firefox/addon/google-translator-for-firefox/" },
+                    { title: "google übersetzer", url: "https://translate.google.de/?sl=fr" },
+                    { title: "deepl translator", url: "https://www.deepl.com/translator" },
+                ]},
+                { name: "Bersetzungen", count: 3, links: [
+                    { title: "deepl übersetzer", url: "https://www.deepl.com/translator" },
+                    { title: "google translate", url: "https://translate.google.com/" },
+                    { title: "2lingual google search", url: "https://2lingual.com/" },
+                ]},
+                { name: "Bersicht Der Vorgehensweise", count: 1, links: [
+                    { title: "github", url: "https://github.com/jonkeegan/behind-this-website" },
+                ]},
+                { name: "Bilder & Bilderkennung", count: 48, links: [
+                    { title: "remove objects from photos with inpaint!", url: "https://theinpaint.com/" },
+                    { title: "cleanup.pictures", url: "https://cleanup.pictures/" },
+                    { title: "you.com (ki)", url: "https://you.com/" },
+                    { title: "remini professional", url: "https://app.remini.ai/?v=da6e2651-ef80-41e6-ac73-09cb47984728" },
+                    { title: "vanceai image sharpener", url: "https://vanceai.com/de/sharpen-ai/" },
+                    { title: "kostenloser hintergrundentferner: bildhintergrund online entfernen", url: "https://picwish.com/de/remove-background?apptype=aps-gg-de&amp;amp;gclid=cj0kcqjwmn2ibhcrarisag_g2i5iiv0fsawjdtyiogex8c0wzy0nyqi0ffj-pgk8dbxzmhyuxlrntasaah6realw_wcb" },
+                    { title: "image sharpener", url: "https://www.media.io/image-sharpener.html" },
+                    { title: "fotor", url: "https://www.fotor.com/?utm_source=default&amp;amp;utm_medium=textlink&amp;amp;utm_campaign=shareasale&amp;amp;sscid=51k7_8owl8" },
+                    { title: "pinetools", url: "https://pinetools.com/" },
+                    { title: "upscayl", url: "https://upscayl.org/" },
+                    { title: "image extractor", url: "https://extract.pics/" },
+                    { title: "flickr", url: "https://secure.flickr.com/" },
+                    { title: "flickr: explore everyone&amp;#39;s photos on a map", url: "https://www.flickr.com/map/" },
+                    { title: "cc search", url: "https://search.creativecommons.org" },
+                    { title: "fotki: share and print your photos", url: "http://www.fotki.com" },
+                    { title: "geo-en.hlipp.de", url: "https://geo-en.hlipp.de/" },
+                    { title: "https://www.geograph.org.uk/", url: "https://www.geograph.org.uk/" },
+                    { title: "search4faces.com", url: "https://search4faces.com/en/" },
+                    { title: "google bilder", url: "https://www.google.de/imghp?hl=de" },
+                    { title: "reveye reverse image search", url: "https://chrome.google.com/webstore/detail/reveye-reverse-image-sear/keaaclcjhehbbapnphnmpiklalfhelgf" },
+                    { title: "tineye", url: "https://www.tineye.com" },
+                    { title: "exif viewer", url: "http://exif.regex.info/exif.cgi" },
+                    { title: "karma decay", url: "http://karmadecay.com" },
+                    { title: "yandex.images: search for images on the internet, search by image", url: "https://yandex.com/images/" },
+                    { title: "suchen: dom köln | flickr", url: "https://www.flickr.com/search/?text=dom%20k%c3%b6ln" },
+                    { title: "tineye reverse image search", url: "https://tineye.com/" },
+                    { title: "pic4carto", url: "http://projets.pavie.info/pic4carto/#3/42.50/-3.00" },
+                    { title: "wikimapia - wir beschreiben die welt!", url: "http://wikimapia.org/#lang=de&amp;amp;lat=52.546601&amp;amp;lon=13.414599&amp;amp;z=19&amp;amp;m=w" },
+                    { title: "capteurs ouverts – francophone osint community", url: "https://capteursouverts.com/en/" },
+                    { title: "microsoft designer", url: "https://designer.microsoft.com/" },
+                    { title: "labs.bria.ai", url: "https://labs.bria.ai/" },
+                    { title: "ai human generator – generate and modify people online", url: "https://generated.photos/human-generator/new" },
+                    { title: "profilepicviewer.com", url: "https://profilepicviewer.com/" },
+                    { title: "facebook and instagram profile viewer", url: "https://downev.com/profileviewer.html" },
+                    { title: "facebook-profilbetrachter", url: "https://faceb.com/profile-viewer/?lang=de" },
+                    { title: "facebook profile picture viewer", url: "https://khalil-shreateh.com/khalil.shtml/social_applications/facebook-applications/profile-picture-viewer-app.html" },
+                    { title: "who posted what?", url: "https://whopostedwhat.com/" },
+                    { title: "face search • pimeyes", url: "https://pimeyes.com/en" },
+                    { title: "faceseek.online", url: "https://faceseek.online" },
+                    { title: "reversely.ai", url: "https://reversely.ai" },
+                    { title: "facecheck", url: "https://facecheck.id/de" },
+                    { title: "tineye reverse image search", url: "https://tineye.com" },
+                    { title: "karma decay", url: "http://karmadecay.com" },
+                    { title: "rootabout", url: "http://rootabout.com/" },
+                    { title: "imgops", url: "http://imgops.com" },
+                    { title: "intelx", url: "https://intelx.io/tools?tab=image" },
+                    { title: "reverse image search", url: "https://www.numlookup.com/reverse-image-search" },
+                    { title: "https://twitter.com/angrytomtweets", url: "https://twitter.com/angrytomtweets" },
+                ]},
+                { name: "Bitcoins", count: 4, links: [
+                    { title: "blockchain", url: "https://blockchain.com" },
+                    { title: "https://www.walletexplorer.com/", url: "https://www.walletexplorer.com/" },
+                    { title: "https://bitcoinwhoswho.com/", url: "https://bitcoinwhoswho.com/" },
+                    { title: "https://www.bitcoinabuse.com/", url: "https://www.bitcoinabuse.com/" },
+                ]},
+                { name: "Browser Addons & Erweiterungen", count: 24, links: [
+                    { title: "exif viewer", url: "https://addons.mozilla.org/en-us/firefox/addon/exif-viewer" },
+                    { title: "exif viewer pro", url: "https://chrome.google.com/webstore/detail/exif-viewer-pro/mmbhfeiddhndihdjeganjggkmjapkffm/related" },
+                    { title: "reveye reverse image search", url: "https://chrome.google.com/webstore/detail/reveye-reverse-image-sear/keaaclcjhehbbapnphnmpiklalfhelgf" },
+                    { title: "reverse image search", url: "https://chrome.google.com/webstore/detail/reverseimage- search/cdgbjhkjjghbjjikgjkkpljlmnpcakco" },
+                    { title: "reverse image search", url: "https://addons.mozilla.org/en- gb/firefox/addon/image-reverse-search" },
+                    { title: "turn off the lights for youtube™", url: "https://chrome.google.com/webstore/detail/turn-off-the-lights/bfbmjmiodbnnpllbbbfblcplfjjepjdn" },
+                    { title: "video downloadhelper", url: "https://chrome.google.com/webstore/detail/video-downloadhelper/lmjnegcaeklhafolokijcfjliaokphfk" },
+                    { title: "osintxplorer", url: "https://sector1.ch/osintxplorer/" },
+                    { title: "osint.support", url: "https://osint.support" },
+                    { title: "jens farley&amp;#39;s facebook bookmarklets", url: "http://com.hemiola.com/bookmarklet/" },
+                    { title: "sinwindie&amp;#39;s tiktok tools", url: "https://github.com/sinwindie/osint/blob/master/tiktok/bookmarklet%20tools" },
+                    { title: "secure, fast &amp;amp; private web browser with adblocker | brave browser", url: "https://brave.com/" },
+                    { title: "avast secure browser | private browser from avast", url: "https://www.avast.com/secure-browser" },
+                    { title: "yandex", url: "https://yandex.com/" },
+                    { title: "project naptha", url: "https://chrome.google.com/webstore/detail/project-naptha/molncoemjfmpgdkbdlbjmhlcgniigdnf" },
+                    { title: "monica", url: "https://monica.im/?utm=twveugm3&amp;amp;twclid=275jurqwxrbdivcv1py3a8423w" },
+                    { title: "behind! – get this extension for 🦊 firefox (en-us)", url: "https://addons.mozilla.org/en-us/firefox/addon/behind" },
+                    { title: "https everywhere", url: "https://addons.mozilla.org/en-us/firefox/addon/https-everywhere/" },
+                    { title: "müllmail schnellzugriff", url: "https://addons.mozilla.org/en-us/firefox/addon/m%c3%bcllmail-schnellzugriff/?src=search" },
+                    { title: "onetab", url: "https://addons.mozilla.org/en-us/firefox/addon/onetab/?src=search" },
+                    { title: "session sync", url: "https://addons.mozilla.org/en-us/firefox/addon/session-sync/" },
+                    { title: "wayback machine", url: "https://addons.mozilla.org/en-us/firefox/addon/wayback-machine_new" },
+                    { title: "dissenter", url: "https://dissenter.com" },
+                    { title: "behind! – get this extension for 🦊 firefox (en-us)", url: "https://addons.mozilla.org/en-us/firefox/addon/behind" },
+                ]},
+                { name: "Cache Und Archive", count: 2, links: [
+                    { title: "web archives", url: "https://chrome.google.com/webstore/detail/web-archives/hkligngkgcpcolhcnkgccglchdafcnao?hl=en" },
+                    { title: "wayback machine", url: "https://chrome.google.com/webstore/detail/wayback-machine/fpnmgdkabkmnadcjpehmlllkndpkmiak" },
+                ]},
+                { name: "Da Werden Auch Falsch Positive Tref...", count: 3, links: [
+                    { title: "discord", url: "https://discord.com/login" },
+                    { title: "twitch pw recovery", url: "https://www.twitch.tv/user/account-recovery" },
+                    { title: "microsoft pw recovery", url: "https://account.live.com/username/recover?wreply=https://login.live.com/login.srf%3flc%3d1031%26mkt%3dde-de%26wa%3dwsignin1.0%26rpsnv%3d13%26ct%3d1574681519%26rver%3d7.1.6819.0%26wp%3dmbi_ssl%26wreply%3dhttps%253a%252f%252fwww.microsoft.com%252fde-de%252fwindows%26lc%3d1031%26id%3d74335%26aadredir%3d1%26contextid%3d08e4a9a72165866c%26bk%3d1574681519%26uaid%3dc6ee0ef3e61748b039faac4bda94847f&amp;amp;id=74335&amp;amp;mkt=de-de&amp;amp;lc=1031&amp;amp;uaid=c6ee0ef3e61748b039faac4bda94847f&amp;amp;uiflavor=web" },
+                ]},
+                { name: "Darkweb & Sicherheit", count: 27, links: [
+                    { title: "ghostery – identify google adsense ids", url: "https://chrome.google.com/webstore/detail/ghostery-%e2%80%93-privacy-ad-blo/mlomiejdfkolichcflejclcbmpeaniij?hl=en" },
+                    { title: "user-agent switcher and manage", url: "https://chrome.google.com/webstore/detail/user-agent-switcher-and-m/bhchdcejhohfmigjafbampogmaanbfkg" },
+                    { title: "tor-projekt | herunterladen", url: "https://www.torproject.org/de/download/" },
+                    { title: "hidden wiki", url: "https://thehiddenwiki.org" },
+                    { title: "darksearch", url: "https://darksearch.io" },
+                    { title: "tor-projekt | herunterladen", url: "https://www.torproject.org/de/download/" },
+                    { title: "hidden wiki", url: "https://thehiddenwiki.org" },
+                    { title: "ahmia - search tor hidden services", url: "https://ahmia.fi" },
+                    { title: "singlefile", url: "https://addons.mozilla.org/en-us/firefox/addon/single-file/" },
+                    { title: "nuke anything enhanced", url: "https://addons.mozilla.org/en-us/firefox/addon/nuke-anything-enhanced/" },
+                    { title: "link gopher", url: "https://addons.mozilla.org/en-us/firefox/addon/link-gopher/" },
+                    { title: "tweetdeck", url: "https://tweetdeck.twitter.com/#" },
+                    { title: "twitterfall", url: "https://twitterfall.com/" },
+                    { title: "spoonbill", url: "http://spoonbill.io/" },
+                    { title: "click to remove element", url: "https://chromewebstore.google.com/detail/click-to-remove-element/jcgpghgjhhahcefnfpbncdmhhddedhnk?hl=de" },
+                    { title: "atomshot", url: "https://chrome.google.com/webstore/detail/atomshot/pjfmllbdhacnbnjgenkeflcmklpkjdcn" },
+                    { title: "bulk media downloader", url: "https://chrome.google.com/webstore/detail/bulk-media-downloader/ehfdcgbfcboceiclmjaofdannmjdeaoi/related?hl=de" },
+                    { title: "data scraper", url: "https://chrome.google.com/webstore/detail/data-scraper-easy-web-scr/nndknepjnldbdbepjfgmncbggmopgden?utm_source=chrome-ntp-icon" },
+                    { title: "downalbum", url: "https://chrome.google.com/webstore/detail/downalbum/cgjnhhjpfcdhbhlcmmjppicjmgfkppok/related" },
+                    { title: "link gopher", url: "https://chrome.google.com/webstore/detail/link-gopher/bpjdkodgnbfalgghnbeggfbfjpcfamkf?utm_source=chrome-ntp-icon" },
+                    { title: "instant data scraper", url: "https://chrome.google.com/webstore/detail/instant-data-scraper/ofaokhiedipichpaobibbnahnkdoiiah/related" },
+                    { title: "linkclump - chrome web store", url: "https://chrome.google.com/webstore/detail/linkclump/lfpjkncokllnfokkgpkobnkbkmelfefj/related?hl=de" },
+                    { title: "dumpitblue+ - chrome web store", url: "https://chrome.google.com/webstore/detail/dumpitblue%2b/igmgknoioooacbcpcfgjigbaajpelbfe/related?hl=de" },
+                    { title: "textgrab", url: "https://chrome.google.com/webstore/detail/textgrab/kbdckoabalhppclkadhabohnoihdbnja/related" },
+                    { title: "link klipper - extract all links - chrome web store", url: "https://chrome.google.com/webstore/detail/link-klipper-extract-all/fahollcgofmpnehocdgofnhkkchiekoo?hl=de" },
+                    { title: "instagram story viewer &amp;amp; highlights anonymous✔️", url: "https://storiesig.info/de/" },
+                    { title: "onion.to gateway to tor hidden services", url: "https://onion.to/" },
+                ]},
+                { name: "Datenbanken", count: 7, links: [
+                    { title: "companies house - gov.uk", url: "https://www.gov.uk/government/organisations/companies-house" },
+                    { title: "opencorporates :: the open database of the corporate world", url: "https://opencorporates.com/" },
+                    { title: "handelsregister &amp;amp; notariate | sg.ch", url: "https://www.sg.ch/recht/handelsregister-notariate.html" },
+                    { title: "worldwidescience", url: "https://worldwidescience.org/" },
+                    { title: "men of letters, writing lives: masculinity and literary auto/biography in the late-victorian period (review), biography | deepdyve", url: "https://www.deepdyve.com/lp/university-of-hawai-i-press/men-of-letters-writing-lives-masculinity-and-literary-auto-biography-i7xbazzl1j?articlelist=%2fsearch%3fquery%3dnature" },
+                    { title: "welcome to unpaywall | unpaywall", url: "http://unpaywall.org/welcome" },
+                    { title: "offeneregister.de", url: "https://offeneregister.de/" },
+                ]},
+                { name: "Datingportale", count: 1, links: [
+                    { title: "tinder | matchen. chatten. daten.tinder", url: "https://tinder.com" },
+                ]},
+                { name: "E-Mail Tools", count: 33, links: [
+                    { title: "tinfoleak", url: "https://tinfoleak.com" },
+                    { title: "deliveroo.fr", url: "https://deliveroo.fr/en/login?redirect=%2fen%2flogin" },
+                    { title: "discord", url: "https://discordapp.com/login" },
+                    { title: "pinterest - deutschland", url: "https://www.pinterest.de/password/reset/" },
+                    { title: "samsung account", url: "https://account.samsung.com/accounts/v1/community/findid#" },
+                    { title: "kennwort zurücksetzen - spotify", url: "https://www.spotify.com/de/password-reset/" },
+                    { title: "tinder", url: "https://tinder.com/" },
+                    { title: "t-online", url: "https://www.t-online.de/" },
+                    { title: "vsco.co", url: "https://vsco.co/user/forgotpassword" },
+                    { title: "reset your password", url: "https://archive.org/account/forgot-password" },
+                    { title: "strava", url: "https://www.strava.com/account/recover" },
+                    { title: "github", url: "https://github.com/password_reset" },
+                    { title: "client challenge", url: "https://www.rossmann.de/de/login" },
+                    { title: "chirpwire.net", url: "https://chirpwire.net/" },
+                    { title: "instagram pw recovery", url: "https://www.instagram.com/accounts/password/reset/" },
+                    { title: "gmail", url: "https://mail.google.com/" },
+                    { title: "tutanota", url: "https://mail.tutanota.com/login" },
+                    { title: "protonmail", url: "https://mail.protonmail.com/login" },
+                    { title: "yahoo", url: "https://login.yahoo.com/config/login?.src=fpctx&amp;amp;.intl=de&amp;amp;.lang=de-de&amp;amp;.done=https%3a%2f%2fde.yahoo.com" },
+                    { title: "gmx", url: "https://www.gmx.net" },
+                    { title: "web.de", url: "https://web.de" },
+                    { title: "mohmal", url: "https://www.mohmal.com/de" },
+                    { title: "squizzy.de", url: "https://www.squizzy.de" },
+                    { title: "gmail", url: "https://mail.google.com/" },
+                    { title: "tutanota", url: "https://mail.tutanota.com/login" },
+                    { title: "protonmail", url: "https://mail.protonmail.com/login" },
+                    { title: "firefox relay", url: "https://relay.firefox.com/" },
+                    { title: "yahoo", url: "https://login.yahoo.com/config/login?.src=fpctx&amp;amp;.intl=de&amp;amp;.lang=de-de&amp;amp;.done=https%3a%2f%2fde.yahoo.com" },
+                    { title: "gmx", url: "https://www.gmx.net" },
+                    { title: "web.de", url: "https://web.de" },
+                    { title: "mohmal", url: "https://www.mohmal.com/de" },
+                    { title: "emkei&amp;#39;s fake mailer", url: "https://emkei.cz" },
+                    { title: "hunter", url: "https://hunter.io/" },
+                ]},
+                { name: "Emulierung", count: 1, links: [
+                    { title: "bluestacks", url: "https://www.bluestacks.com/de/index.html?utm_campaign=aw-ded-brandsearch-de-ww-s-5-nofle&amp;amp;gclid=cjwkcaia__hvbraceiwabviuuw9jrjgfn62gyet4douyydja6heagratcfxwkq6eui0kw82owtnb7bocg_kqavd_bwe" },
+                ]},
+                { name: "En  Decryption", count: 4, links: [
+                    { title: "md5 online", url: "https://www.md5online.org/md5-decrypt.html" },
+                    { title: "decode from base64 format", url: "https://www.base64decode.org/" },
+                    { title: "binär-dezimal-hexadezimal umrechner", url: "https://bin-dez-hex-umrechner.de/" },
+                    { title: "cyberchef", url: "https://gchq.github.io/cyberchef/" },
+                ]},
+                { name: "Eventuell", count: 4, links: [
+                    { title: "truecaller.com", url: "https://www.truecaller.com/" },
+                    { title: "sync", url: "https://sync.me/" },
+                    { title: "open source intelligence new zealand", url: "https://osint.rocks/" },
+                    { title: "skype --&amp;gt; teams", url: "https://teams.live.com/v2" },
+                ]},
+                { name: "Eventuell Irgendwann Wieder", count: 2, links: [
+                    { title: "icq", url: "https://www.icq.com/" },
+                    { title: "hellocallers.com", url: "https://hellocallers.com/" },
+                ]},
+                { name: "Eventuell Nutzbar Y", count: 1, links: [
+                    { title: "https://aws.amazon.com/de/rekognition/", url: "https://aws.amazon.com/de/rekognition/" },
+                ]},
+                { name: "Eventuell Wieder Y", count: 3, links: [
+                    { title: "icq", url: "https://www.icq.com/" },
+                    { title: "paltalk", url: "https://www.paltalk.com/hi-res/" },
+                    { title: "skype web --&amp;gt; teams", url: "https://teams.live.com/v2" },
+                ]},
+                { name: "General", count: 1, links: [
+                    { title: "lessan deutsch-arabisch - ?bersetzung von: : الام", url: "http://www.lessan.org/de/%d8%a7%d9%84%d8%a7%d9%85" },
+                ]},
+                { name: "Geolokation & Karten", count: 50, links: [
+                    { title: "dual maps: road maps, aerial view and street view in one embeddable control", url: "https://s3.amazonaws.com/data.mapchannels.com/dualmaps6/map.htm" },
+                    { title: "google maps", url: "https://www.google.com/maps" },
+                    { title: "instantstreetview", url: "https://www.instantstreetview.com" },
+                    { title: "bing maps", url: "https://www.bing.com/maps/" },
+                    { title: "geonames", url: "http://www.geonames.org" },
+                    { title: "mapillary - street-level imagery, powered by collaboration and computer vision", url: "https://www.mapillary.com/app/?lat=20&amp;amp;lng=0&amp;amp;z=1.5&amp;amp;p=&amp;amp;mapstyle=mapbox_satellite" },
+                    { title: "yandex maps", url: "https://yandex.com/maps/98/cologne/?l=sat&amp;amp;ll=6.938399%2c50.930779&amp;amp;z=13" },
+                    { title: "wikiroutes: dein öpnv-guide", url: "https://wikiroutes.info/de/" },
+                    { title: "wikimapia", url: "http://wikimapia.org/#lang=de&amp;amp;lat=52.382800&amp;amp;lon=8.630000&amp;amp;z=12&amp;amp;m=w" },
+                    { title: "https://www.openstreetmap.de", url: "https://www.openstreetmap.de" },
+                    { title: "map switcher", url: "https://chrome.google.com/webstore/detail/map-switcher/fanpjcbgdinjeknjikpfnldfpnnpkelb" },
+                    { title: "#onemilliontweetmap", url: "https://onemilliontweetmap.com/?center=25.505,-0.09&amp;amp;zoom=2&amp;amp;search=&amp;amp;timestep=0&amp;amp;timeselector=0&amp;amp;hashtag1=&amp;amp;hashtag2=sad&amp;amp;sidebar=yes&amp;amp;hashtagbattle=0&amp;amp;timerange=0&amp;amp;timerange=25&amp;amp;heatmap=0&amp;amp;sun=0&amp;amp;cluster=1" },
+                    { title: "realtime tweets map", url: "https://www.tweeplers.com/map/" },
+                    { title: "geolocation search (if location services tuned on by user)", url: "http://geosocialfootprint.com/" },
+                    { title: "old maps online", url: "https://www.oldmapsonline.org" },
+                    { title: "perry-castañeda library map collection", url: "https://www.lib.utexas.edu/maps" },
+                    { title: "global gazzetteer", url: "http://www.fallingrain.com/world/index.html" },
+                    { title: "marine traffic", url: "https://www.marinetraffic.com/" },
+                    { title: "whatiswhere.com", url: "https://www.whatiswhere.com/" },
+                    { title: "f4map demo - interactive 3d map", url: "https://demo.f4map.com/#camera.theta=0.9" },
+                    { title: "dual maps", url: "https://data.mapchannels.com/dualmaps8/map.htm" },
+                    { title: "google earth", url: "https://www.google.com/earth/" },
+                    { title: "wikimapia", url: "http://wikimapia.org/#lat=46.587385&amp;amp;lon=1.8136916&amp;amp;z=2&amp;amp;l=0&amp;amp;m=b" },
+                    { title: "openstreetmap", url: "http://www.openstreetmap.org" },
+                    { title: "osm-finder.netlify.app", url: "https://osm-finder.netlify.app/" },
+                    { title: "overpass-turbo.eu", url: "http://overpass-turbo.eu/" },
+                    { title: "overpass turbo", url: "https://wiki.openstreetmap.org/wiki/overpass_turbo" },
+                    { title: "relation:restriction - openstreetmap wiki", url: "https://wiki.openstreetmap.org/wiki/relation:restriction" },
+                    { title: "whatiswhere.com", url: "https://www.whatiswhere.com/" },
+                    { title: "map features", url: "https://wiki.openstreetmap.org/wiki/map_features" },
+                    { title: "osm queries", url: "https://osm-queries.ldodds.com/" },
+                    { title: "osm-finder.netlify.app", url: "https://osm-finder.netlify.app/" },
+                    { title: "chatgpt", url: "https://chat.openai.com/" },
+                    { title: "overpass api/language guide", url: "https://wiki.openstreetmap.org/wiki/overpass_api/language_guide" },
+                    { title: "bellingcat openstreetmap search", url: "https://osm-search.bellingcat.com/" },
+                    { title: "http://overpass-api.de/api/status", url: "http://overpass-api.de/api/status" },
+                    { title: "getting started with overpass turbo – part 1 – nixintel", url: "https://nixintel.info/osint-tools/getting-started-with-overpass-turbo-part-1/" },
+                    { title: "getting started with overpass turbo – part 2 – nixintel", url: "https://nixintel.info/osint-tools/getting-started-with-overpass-turbo-part-2/" },
+                    { title: "spot – the easy way to find locations", url: "https://www.findthatspot.io/" },
+                    { title: "15 free satellite imagery data sources - gis geography", url: "https://gisgeography.com/free-satellite-imagery-data-list/" },
+                    { title: "wikimapia - wir beschreiben die welt!", url: "http://wikimapia.org/#lang=de&amp;amp;lat=52.546600&amp;amp;lon=13.414600&amp;amp;z=12&amp;amp;m=w" },
+                    { title: "cologne, germany. - land viewer | eos", url: "https://eos.com/landviewer/?lat=52.51204&amp;amp;lng=13.64159&amp;amp;z=12" },
+                    { title: "google earth", url: "https://www.google.com/earth/" },
+                    { title: "sentinel playground | sentinel hub", url: "https://apps.sentinel-hub.com/sentinel-playground/?source=s2l2a&amp;amp;lat=40.4&amp;amp;lng=-3.730000000000018&amp;amp;zoom=12&amp;amp;preset=1_true_color&amp;amp;layers=b01,b02,b03&amp;amp;maxcc=20&amp;amp;gain=1.0&amp;amp;gamma=1.0&amp;amp;time=2020-10-01%7c2021-04-23&amp;amp;atmfilter=&amp;amp;showdates=false" },
+                    { title: "sentinel hub eo browser", url: "https://apps.sentinel-hub.com/eo-browser/?zoom=10&amp;amp;lat=41.9&amp;amp;lng=12.5&amp;amp;themeid=default-theme" },
+                    { title: "https://gisgeography.com/free-satellite-imagery-data-list/", url: "https://gisgeography.com/free-satellite-imagery-data-list/" },
+                    { title: "wikimapia", url: "http://wikimapia.org/" },
+                    { title: "imo", url: "https://gisis.imo.org/public/default.aspx" },
+                    { title: "fleetmon", url: "https://www.fleetmon.com/" },
+                    { title: "marine traffic", url: "https://www.marinetraffic.com/" },
+                ]},
+                { name: "Grunddaten", count: 1, links: [
+                    { title: "tiktok user info finder", url: "https://omar-thing.site/" },
+                ]},
+                { name: "Hardware Dienstleister", count: 3, links: [
+                    { title: "apple account", url: "https://appleid.apple.com/#!&amp;amp;page=signin" },
+                    { title: "samsung account", url: "https://account.samsung.com/accounts/v1/community/signingate?client_id=kb2p5ec2m9&amp;amp;redirect_uri=https:%2f%2feu.community.samsung.com%2fauth%2foauth2callback&amp;amp;response_type=code&amp;amp;state=https:%2f%2feu.community.samsung.com%2f%3fcategory.id%3dde%26lang%3dde&amp;amp;countrycode=de&amp;amp;locale=de&amp;amp;gobackurl=https:%2f%2feu.community.samsung.com%2f%3fcategory.id%3dde%26lang%3dde" },
+                    { title: "microsoft", url: "https://login.live.com/login.srf?wa=wsignin1.0&amp;amp;rpsnv=13&amp;amp;ct=1574681519&amp;amp;rver=7.1.6819.0&amp;amp;wp=mbi_ssl&amp;amp;wreply=https%3a%2f%2fwww.microsoft.com%2fde-de%2fwindows&amp;amp;lc=1031&amp;amp;id=74335&amp;amp;aadredir=1" },
+                ]},
+                { name: "Herunterladen Von Untertiteln", count: 1, links: [
+                    { title: "downsub", url: "https://downsub.com/" },
+                ]},
+                { name: "Hilfreiche Suchmuster", count: 11, links: [
+                    { title: "osint framework", url: "https://osintframework.com" },
+                    { title: "osint tools - osint techniques", url: "https://www.osinttechniques.com/osint-tools.html#" },
+                    { title: "we are osintcurio.us", url: "https://osintcurio.us" },
+                    { title: "so geht onlinerecherche 2.0: nützliche tools und strategien", url: "http://rechercheseminar.de/tools/#1556991998075-83f860b7-c104" },
+                    { title: "keyword-search for facebook and twitter", url: "https://rechercheseminar.de/searchbox/" },
+                    { title: "osint tools", url: "https://netbootcamp.org/osinttools/" },
+                    { title: "open source intelligence (osint) tools &amp;amp; resources", url: "https://osint.link" },
+                    { title: "osint framework", url: "https://osintframework.com" },
+                    { title: "https://www.etools.ch", url: "https://www.etools.ch" },
+                    { title: "inteltechniques.com", url: "https://inteltechniques.com" },
+                    { title: "osint cheat-sheet - google search", url: "https://www.google.de/search?client=opera&amp;amp;q=osint+cheat-sheet&amp;amp;sourceid=opera&amp;amp;ie=utf-8&amp;amp;oe=utf-8" },
+                ]},
+                { name: "Hilfsmittel", count: 27, links: [
+                    { title: "sonnenverlauf - sonnenaufgang, sonnenuntergang, schattenlaenge, sonnenfinsternis, sonnenposition, sonnenphase, sonnenhoehe, sonnenrechner, elevation, pv-anlage, photovoltaik", url: "https://www.sonnenverlauf.de/#/36.3834,38.1757,16/2016.07.20/19:50/1/0" },
+                    { title: "suncalc - sun position, sunlight phases, sunrise, sunset, dusk and dawn times calculator", url: "http://suncalc.net/#/36.3821,38.1752,16/2016.06.10/16:17" },
+                    { title: "travic - transit visualization client", url: "http://tracker.geops.ch/?z=13&amp;amp;s=1&amp;amp;x=1113949.6541&amp;amp;y=7087953.6534&amp;amp;l=transport" },
+                    { title: "github - ivmachiavelli/osint-browser-plugins: osint browser plugins", url: "https://github.com/ivmachiavelli/osint-browser-plugins" },
+                    { title: "alexa top 500 global sites", url: "https://www.alexa.com/topsites" },
+                    { title: "thispersondoesnotexist.com (1024×1024)", url: "https://thispersondoesnotexist.com/" },
+                    { title: "clavier en ligne dans toutes les langues • lexilogos &amp;gt;&amp;gt;", url: "https://www.lexilogos.com/clavier/index.htm" },
+                    { title: "ströer motivdatenbank", url: "https://motivdatenbank.tools.stroeer.de/#/search/results/" },
+                    { title: "lexilogos - dictionnaires, cartes, documents en ligne - langues &amp;amp; pays", url: "https://www.lexilogos.com/" },
+                    { title: "jihadist identifiers :: jihad intel", url: "https://jihadintel.meforum.org//identifiers/" },
+                    { title: "invid", url: "http://logos.iti.gr/logos/" },
+                    { title: "suncalc - sun position, sunlight phases, sunrise, sunset, dusk and dawn times calculator", url: "http://www.suncalc.net/#/52.167,11.667,12/2019.05.14/08:23" },
+                    { title: "sonnenverlauf - sonnenaufgang, sonnenuntergang, schattenlaenge, sonnenfinsternis, sonnenposition, sonnenphase, sonnenhoehe, sonnenrechner, elevation, pv-anlage, photovoltaik", url: "https://www.sonnenverlauf.de/#/40.1789,-3.5156,3/2019.05.14/08:24/1/3" },
+                    { title: "barcode reader. free online web application", url: "https://online-barcode-reader.inliteresearch.com/" },
+                    { title: "mastering google search operators in 67 easy steps - moz", url: "https://moz.com/blog/mastering-google-search-operators-in-67-steps" },
+                    { title: "checkshorturl - your shortened url expander", url: "http://www.checkshorturl.com/" },
+                    { title: "invid project - video verification", url: "https://www.invid-project.eu/" },
+                    { title: "facebook osint: how to collect attendee names and profile urls from event pages - sean lawson", url: "https://www.seanlawson.net/2019/02/facebook-osint-how-to-collect-attendee-names-and-profile-urls-from-event-pages/" },
+                    { title: "byom.de wegwerf emails: trashmail mal anders!", url: "https://www.byom.de/" },
+                    { title: "suncalc", url: "http://suncalc.org/" },
+                    { title: "dual maps", url: "http://data.mashedworld.com/dualmaps/map.htm" },
+                    { title: "showmystreet", url: "https://showmystreet.com" },
+                    { title: "geonames", url: "http://www.geonames.org" },
+                    { title: "map convert", url: "http://andrew.hedges.name/experiments/convert_lat_long/" },
+                    { title: "http://www.geonames.org/", url: "http://www.geonames.org/" },
+                    { title: "geolocationcountryclassification", url: "https://huggingface.co/spaces/nemesisalm/geolocationcountryclassification" },
+                    { title: "bellingcat schattenwurftool", url: "https://colab.research.google.com/github/bellingcat/shadowfinder/blob/main/shadowfindercolab.ipynb" },
+                ]},
+                { name: "Hilfsmittel X", count: 7, links: [
+                    { title: "watch frame by frame", url: "http://www.watchframebyframe.com" },
+                    { title: "anilyzer.com", url: "http://anilyzer.com/" },
+                    { title: "watch youtube videos without logging in", url: "http://nsfwyoutube.com/" },
+                    { title: "slowtube", url: "https://www.dkthehuman.com/slowtube/" },
+                    { title: "vlc-player", url: "https://www.videolan.org/vlc" },
+                    { title: "location search", url: "https://mattw.io/youtube-geofind/location" },
+                    { title: "simple-youtube-age-restriction-bypass", url: "https://github.com/zerodytrash/simple-youtube-age-restriction-bypass" },
+                ]},
+                { name: "Hintergrundinformationen", count: 7, links: [
+                    { title: "bellingcat guides archives", url: "https://www.bellingcat.com/category/resources/how-tos/" },
+                    { title: "bellingcat&amp;#39;s online investigation toolkit", url: "https://docs.google.com/document/d/1bflpjprtyq4rfthjonpvwqjmgnyvkfe2hyoickoggua/edit#" },
+                    { title: "we are osintcurio.us", url: "https://osintcurio.us" },
+                    { title: "toddington", url: "https://www.toddington.com" },
+                    { title: "wonder how to", url: "https://wonderhowto.com" },
+                    { title: "invid project - video verification", url: "https://invid-project.eu" },
+                    { title: "keyserver", url: "https://www.heise.de/security/dienste/keyserver-474468.html" },
+                ]},
+                { name: "Hosting Dienste Exploits", count: 6, links: [
+                    { title: "offensive security’s exploit database archive", url: "https://www.exploit-db.com" },
+                    { title: "pastebin", url: "https://pastebin.com/signup" },
+                    { title: "bittorrent", url: "https://www.bittorrent.com/lang/de/" },
+                    { title: "offensive security’s exploit database archive", url: "https://www.exploit-db.com" },
+                    { title: "pastebin", url: "https://pastebin.com/signup" },
+                    { title: "bittorrent", url: "https://www.bittorrent.com/lang/de/" },
+                ]},
+                { name: "How To", count: 1, links: [
+                    { title: "how to zoom this close into google maps - hongkiatfacebooktwitterinstagrampinterestlinkedingoogle+youtuberedditdribbblebehancegithubcodepenwhatsappemail", url: "https://www.hongkiat.com/blog/how-to-zoom-this-close-into-google-maps/#:~:text=first%20of%20all%2c%20search%20for,bottom%20of%20the%20map%20screen." },
+                ]},
+                { name: "Ig", count: 8, links: [
+                    { title: "https://i.instagram.com/api/v1/users/7719696/info/", url: "https://i.instagram.com/api/v1/users/7719696/info/" },
+                    { title: "instagram interaction reports - gramspy.com", url: "http://gramspy.com/" },
+                    { title: "instagram online viewer | picdeer", url: "http://picdeer.com/" },
+                    { title: "online tools by mike dalisay - made by a developer, for a developer!", url: "http://www.codeofaninja.com/tools/" },
+                    { title: "instagram interaction reports - gramfly.com", url: "https://gramfly.com/" },
+                    { title: "alshami5284 - full size instadp", url: "https://www.instadp.com/fullsize/alshami5284" },
+                    { title: "instagram online viewer | picpanzee", url: "http://picpanzee.com/" },
+                    { title: "instagram user search engine - gramuser.com", url: "https://gramuser.com/" },
+                ]},
+                { name: "Internetplattformen  Boards Y", count: 10, links: [
+                    { title: "4chan", url: "https://4chan.org" },
+                    { title: "anon.cafe", url: "https://anon.cafe" },
+                    { title: "endchan", url: "https://endchan.net" },
+                    { title: "pr0gramm.com", url: "https://pr0gramm.com" },
+                    { title: "smuglo", url: "https://smuglo.li/a/" },
+                    { title: "sportschan", url: "https://sportschan.org" },
+                    { title: "erischan", url: "https://erischan.org" },
+                    { title: "log in - zig forums", url: "https://zigforums.com/login#/?r=%2f%2fzigforums.com%2fsection%2fright-politics" },
+                    { title: "saidit.net", url: "https://saidit.net" },
+                    { title: "8kun.top/index.html", url: "https://8kun.top/index.html" },
+                ]},
+                { name: "Iot", count: 1, links: [
+                    { title: "shodan", url: "https://www.shodan.io" },
+                ]},
+                { name: "KI & Maschinelles Lernen", count: 22, links: [
+                    { title: "geospy.web.app", url: "https://geospy.web.app/" },
+                    { title: "graylark", url: "https://superbolt.web.app/" },
+                    { title: "earthkit agent", url: "https://agent.earthkit.app/" },
+                    { title: "earthkit", url: "https://earthkit.app/" },
+                    { title: "find photo location using artificial intelligence", url: "https://picarta.ai/" },
+                    { title: "lenso.ai", url: "https://lenso.ai/de" },
+                    { title: "notebooklm", url: "https://notebooklm.google.com/?_gl=1*x8hpra*_ga*mtgyntyxmjk2os4xnzm0ntazmjm4*_ga_w0ldh41zcb*mtcznduwmzizny4xljeumtcznduwmzizny4wljauma..&amp;amp;original_referer=https:%2f%2fnotebooklm.google%23&amp;amp;pli=1" },
+                    { title: "prompts.chat", url: "https://prompts.chat/" },
+                    { title: "chatgpt prompt generator", url: "https://huggingface.co/spaces/merve/chatgpt-prompt-generator" },
+                    { title: "chatgpt prompt generator", url: "https://chatx.ai/chatgpt-prompt-generator/" },
+                    { title: "chatpdf", url: "https://www.chatpdf.com/" },
+                    { title: "you.com", url: "https://you.com/" },
+                    { title: "perplexity ai", url: "https://www.perplexity.ai/" },
+                    { title: "freedomgpt", url: "https://www.freedomgpt.com/" },
+                    { title: "huggingchat", url: "https://huggingface.co/chat" },
+                    { title: "ai chat", url: "https://deepai.org/chat" },
+                    { title: "futuretools.io", url: "https://www.futuretools.io/" },
+                    { title: "ai.ls", url: "https://ai.ls/?chat=1" },
+                    { title: "anonchatgpt.com", url: "https://anonchatgpt.com/" },
+                    { title: "talk to claude, an ai assistant from anthropic", url: "https://claude.ai/login" },
+                    { title: "labs.perplexity.ai", url: "https://labs.perplexity.ai/" },
+                    { title: "metaphor.systems", url: "https://metaphor.systems/" },
+                ]},
+                { name: "Kontaktpersonen  Ber Likes Generier...", count: 1, links: [
+                    { title: "facebook friends list generator | osint support", url: "https://osint.support/chrome-extensions/2019/10/20/facebook-friends-list-generator.html" },
+                ]},
+                { name: "Konvertierung", count: 1, links: [
+                    { title: "json to csv converter", url: "https://www.convertcsv.com/json-to-csv.htm" },
+                ]},
+                { name: "Konvertierung  F R Kontakte  Y", count: 1, links: [
+                    { title: "json to csv converter", url: "https://www.convertcsv.com/json-to-csv.htm" },
+                ]},
+                { name: "Kopie Von Bitcoins", count: 1, links: [
+                    { title: "blockchain", url: "https://blockchain.com" },
+                ]},
+                { name: "Kopie Von Internetplattformen  Boar...", count: 16, links: [
+                    { title: "4chan", url: "https://4chan.org" },
+                    { title: "anon.cafe", url: "https://anon.cafe" },
+                    { title: "endchan", url: "https://endchan.net" },
+                    { title: "www.kohlchan.net", url: "https://kohlchan.net" },
+                    { title: "https://vch.moe", url: "https://vch.moe" },
+                    { title: "pr0gramm.com", url: "https://pr0gramm.com" },
+                    { title: "julayworld", url: "https://julay.world" },
+                    { title: "smuglo", url: "https://smuglo.li/a/" },
+                    { title: "sportschan", url: "https://sportschan.org" },
+                    { title: "fatpeople.lol", url: "https://fatpeople.lol/index.html" },
+                    { title: "erischan", url: "https://erischan.org" },
+                    { title: "kiwi farms", url: "https://kiwifarms.net" },
+                    { title: "log in - zig forums", url: "https://zigforums.com/login#/?r=%2f%2fzigforums.com%2fsection%2fright-politics" },
+                    { title: "voat.co/account/login", url: "https://voat.co/account/login?returnurl=/" },
+                    { title: "saidit.net", url: "https://saidit.net" },
+                    { title: "8kun.top/index.html", url: "https://8kun.top/index.html" },
+                ]},
+                { name: "Kopie Von Steam", count: 8, links: [
+                    { title: "steam community", url: "https://steamcommunity.com/login/home/?goto=" },
+                    { title: "steamid.uk", url: "https://steamid.uk" },
+                    { title: "steamid.io", url: "https://steamid.io/lookup" },
+                    { title: "steamrep » home", url: "http://steamrep.com" },
+                    { title: "http://www.vacbanned.com", url: "http://www.vacbanned.com" },
+                    { title: "steamarchive", url: "https://steamarchive.net" },
+                    { title: "steamid", url: "https://developer.valvesoftware.com/wiki/steamid" },
+                    { title: "steam 社区", url: "https://auth.topgamers.cn" },
+                ]},
+                { name: "Kopie Von Weitere Spieleplattformen", count: 3, links: [
+                    { title: "ea games", url: "https://signin.ea.com/p/web2/login?execution=e1765642244s1&amp;amp;initref=https%3a%2f%2faccounts.ea.com%3a443%2fconnect%2fauth%3fresponse_type%3dcode%26redirect_uri%3dhttps%253a%252f%252fwww.ea.com%252flogin_check%26state%3dc3ba5e06-a983-4631-9d38-a64a08b76252%26client_id%3deadotcom-web-server" },
+                    { title: "ubisoft connect", url: "https://connect.ubisoft.com/login?appid=880650b9-35a5-4480-8f32-6a328eaa3aad&amp;amp;lang=de-de&amp;amp;nexturl=https:%2f%2fstore.ubi.com%2fde%2fuplaynext%3ftype%3dlogin&amp;amp;genomeid=3874818c-b125-4514-8747-77912530647a" },
+                    { title: "dreamteam", url: "https://dreamteam.gg" },
+                ]},
+                { name: "Kopie Von Werkzeuge   Os", count: 8, links: [
+                    { title: "osintxplorer", url: "https://sector1.ch/osintxplorer/" },
+                    { title: "tails", url: "https://tails.boum.org" },
+                    { title: "parrot os - the advanced system for security experts, developers and crypto-addicted people.", url: "https://parrotlinux.org/index.php#" },
+                    { title: "kali linux", url: "https://www.kali.org" },
+                    { title: "whonix ™", url: "https://www.whonix.org" },
+                    { title: "bluestacks - der beste android emulator für pc", url: "https://www.bluestacks.com/de/index.html?utm_campaign=aw-ded-brandsearch-de-ww-s-5-nofle&amp;amp;gclid=cjwkcaia__hvbraceiwabviuuw9jrjgfn62gyet4douyydja6heagratcfxwkq6eui0kw82owtnb7bocg_kqavd_bwe" },
+                    { title: "dissenter", url: "https://dissenter.com" },
+                    { title: "download httrack website copier 3.49-2", url: "http://www.httrack.com/page/2/" },
+                ]},
+                { name: "Koran", count: 1, links: [
+                    { title: "tanzil", url: "https://tanzil.net/#25:26" },
+                ]},
+                { name: "Lesezeichenleiste", count: 16, links: [
+                    { title: "phil bradley (@philbradley) | twitter", url: "https://twitter.com/philbradley" },
+                    { title: "scrolldown", url: "javascript:t=2500;oh=0;function%20scrolldown(){h=document.body.scrollheight;window.scrollto(0,h);if(oh&amp;lt;h){oh=h;t=settimeout(scrolldown,t);}}scrolldown();" },
+                    { title: "stopscrolling", url: "javascript:cleartimeout(t);" },
+                    { title: "dateien zu einer pdf zusammenfügen - 100% kostenfrei - pdf24 tools", url: "https://tools.pdf24.org/de/dateien-zusammenfuegen" },
+                    { title: "arabische tastatur 2016 ™ أسرع موقع للكتابة بالعربية", url: "http://www.clavier-arab.org/arabische-tastatur/" },
+                    { title: "sternenstaub@tutanota.com - tutanota", url: "https://app.tutanota.com/#box" },
+                    { title: "deutsch - arabisch übersetzung | translator.eu", url: "https://www.translator.eu/deutsch/arabisch/ubersetzung/" },
+                    { title: "kalimāt: arabisch für islamwissenschaft und arabistik", url: "http://www.aoi.uzh.ch/kalimat/de/home" },
+                    { title: "bbc world service radio stream - listen online for free", url: "http://bbcworldservice.radio.net/" },
+                    { title: "microsoft word - osint_research_tools_november_2016_v.2.0.docx", url: "https://www.i-intelligence.eu/wp-content/uploads/2016/11/2016_november_open-source-intelligence-tools-and-resources-handbook.pdf" },
+                    { title: "resource: osint tools and how you learn how to use them – guurhart", url: "https://www.peerlyst.com/posts/resource-osint-tools-and-how-you-learn-how-to-use-them-guurhart?trk=search_page_search_result" },
+                    { title: "security posts - find resources, discussions and insights", url: "https://www.peerlyst.com/search/posts?query=osint&amp;amp;trk=search_query" },
+                    { title: "github - sowdust/searchbook: a firefox extension for executing some graph-like searches against facebook.", url: "https://github.com/sowdust/searchbook" },
+                    { title: "intelligence x", url: "https://intelx.io/tools" },
+                    { title: "auf werbetour - youtube", url: "https://www.youtube.com/watch?v=zuoskx9jpsc" },
+                    { title: "insite on technology and terrorism: inside jihadist groups’ growing exploitation of messenger apps", url: "https://ent.siteintelgroup.com/insite-report-on-technology-and-terrorism/insite-on-technology-and-terrorism-inside-jihadist-groups-growing-exploitation-of-messenger-apps.html" },
+                ]},
+                { name: "Lesezeichenleiste   Fb", count: 2, links: [
+                    { title: "&amp;quot;جوجل&amp;quot; تنفي شائعات اعتزامها فتح متاجر للبيع بالتجزئة - worldnews.com", url: "https://article.wn.com/view-lemonde/wnat132375684c7b5de3528dee3df259a675/#/related_news" },
+                    { title: "(27) facebook", url: "https://www.facebook.com/browse/mutual_friends/?uid=100016964167283&amp;amp;node=100013486863770" },
+                ]},
+                { name: "Lesezeichenleiste   Regelm  Ige Sic...", count: 16, links: [
+                    { title: "toddington intnl inc (@toddingtonint) | twitter", url: "https://twitter.com/toddingtonint" },
+                    { title: "stephen e arnold (@beyondsearch) | twitter", url: "https://twitter.com/beyondsearch" },
+                    { title: "jake creps (@jakecreps) | twitter", url: "https://twitter.com/jakecreps" },
+                    { title: "open source intelligence training - toddington international inc", url: "https://www.toddington.com/" },
+                    { title: "research clinic", url: "http://researchclinic.net/" },
+                    { title: "qwarie: uk-osint", url: "https://www.uk-osint.net/" },
+                    { title: "osint open source intelligence tools resources methods techniques", url: "http://rr.reuser.biz/" },
+                    { title: "osint", url: "http://onstrat.com/osint/" },
+                    { title: "i-intelligence", url: "https://www.i-intelligence.eu/" },
+                    { title: "jake creps – open source intelligence", url: "https://jakecreps.com/" },
+                    { title: "rita katz (@rita_katz) / twitter", url: "https://twitter.com/rita_katz" },
+                    { title: "englisch vokabeln lernen kostenlos", url: "https://www.vokabel.org/englisch/vokabeln/" },
+                    { title: "grundwortschatz englisch (gb) vokabeln üben | englisch (gb) lernen", url: "https://www.vokabel.org/englisch/grundwortschatz-lektionen-34413/" },
+                    { title: "home · osint support", url: "https://osint.support/" },
+                    { title: "account knocking for fun and osint", url: "https://www.secjuice.com/account-recovery-osint/" },
+                    { title: "osint training center - aware online academy - osint trainingen 2019", url: "https://www.aware-online.com/" },
+                ]},
+                { name: "Links X", count: 8, links: [
+                    { title: "steam community", url: "https://steamcommunity.com/login/home/?goto=" },
+                    { title: "steamid.uk", url: "https://steamid.uk" },
+                    { title: "steamid.io", url: "https://steamid.io/lookup" },
+                    { title: "steamrep » home", url: "http://steamrep.com" },
+                    { title: "http://www.vacbanned.com", url: "http://www.vacbanned.com" },
+                    { title: "steamid", url: "https://developer.valvesoftware.com/wiki/steamid" },
+                    { title: "steam community :: gruppensuche", url: "https://steamcommunity.com/search/groups/?l=german" },
+                    { title: "steam community :: freundesuche", url: "https://steamcommunity.com/search/users/?l=german" },
+                ]},
+                { name: "Metadaten & Zeitstempel", count: 21, links: [
+                    { title: "exif viewer pro", url: "https://chrome.google.com/webstore/detail/exif-viewer-pro/mmbhfeiddhndihdjeganjggkmjapkffm/related" },
+                    { title: "exif viewer (chrome)", url: "https://chrome.google.com/webstore/detail/exif-viewer/nafpfdcmppffipmhcpkbplhkoiekndck?hl=en" },
+                    { title: "exif viewer (ff)", url: "https://addons.mozilla.org/en-us/firefox/addon/exif-viewer/" },
+                    { title: "fotoforensics", url: "http://fotoforensics.com/" },
+                    { title: "imgops", url: "http://imgops.com" },
+                    { title: "intelx", url: "https://intelx.io/tools?tab=image" },
+                    { title: "exif data viewer", url: "http://exifdata.com" },
+                    { title: "thexifer.net", url: "https://www.thexifer.net" },
+                    { title: "exif.tools", url: "https://exif.tools" },
+                    { title: "metadata viewer", url: "https://www.extractmetadata.com/" },
+                    { title: "image metadata viewer", url: "https://metadataviewer.herokuapp.com/" },
+                    { title: "onlineexifviewer.com", url: "https://onlineexifviewer.com/" },
+                    { title: "reveal", url: "http://reveal-mklab.iti.gr/reveal/index.html" },
+                    { title: "forensic analyzer", url: "https://www.imageforensic.org/#work" },
+                    { title: "view exif data online, remove exif online", url: "http://www.verexif.com/en/" },
+                    { title: "exif viewer", url: "http://exif.regex.info/exif.cgi" },
+                    { title: "facebook", url: "https://www.facebook.com/marketplace/?seller_profile=hier_id_eintragen/" },
+                    { title: "jeffrey friedl&amp;#39;s image metadata viewer", url: "http://exif.regex.info/exif.cgi" },
+                    { title: "unfurl", url: "https://dfir.blog/unfurl/" },
+                    { title: "find out when a tiktok was posted with this free tool • trevor fox", url: "https://trevorfox.com/tools/tiktok-video-date-extractor/" },
+                    { title: "tiktok date extractor", url: "https://bellingcat.github.io/tiktok-timestamp/" },
+                ]},
+                { name: "Namen X", count: 15, links: [
+                    { title: "personensuche für deutschland", url: "http://www.namenfinden.de" },
+                    { title: "gofindwho.com", url: "https://gofindwho.com" },
+                    { title: "yasni", url: "http://www.yasni.de" },
+                    { title: "social searcher", url: "https://www.social-searcher.com" },
+                    { title: "thats them", url: "https://thatsthem.com" },
+                    { title: "peekyou.com", url: "https://peekyou.com" },
+                    { title: "white pages", url: "https://www.whitepages.com" },
+                    { title: "radaris germany: kostenlose personensuche, stammbaum und ahnenforschung, strafregister, leute finden", url: "http://radaris.de" },
+                    { title: "real time search", url: "http://socialmention.com" },
+                    { title: "zureu", url: "http://zureu.com" },
+                    { title: "de.findwith.me", url: "http://de.findwith.me" },
+                    { title: "buzzglobe.com", url: "https://buzzglobe.com" },
+                    { title: "people and business search - public records  - background check", url: "https://radaris.com" },
+                    { title: "zaba search", url: "https://zabasearch.com" },
+                    { title: "castrick", url: "https://castrickclues.com/" },
+                ]},
+                { name: "Nicht Mehr", count: 3, links: [
+                    { title: "castrick", url: "https://castrickclues.com/" },
+                    { title: "fuck facebook (tm) oder ohne .pet direkt bei tor", url: "http://4wbwa6vcpvcr3vvf4qkhppgy56urmjcj2vagu2iqgp3z656xcmfdbiqd.onion.pet/" },
+                    { title: "facebook data breach checker", url: "https://haveibeenzuckered.com/" },
+                ]},
+                { name: "Nicknames X", count: 12, links: [
+                    { title: "whatsmyname web", url: "https://whatsmyname.app/" },
+                    { title: "check usernames", url: "http://checkusernames.com" },
+                    { title: "lullar", url: "http://lullar.com" },
+                    { title: "knowem username search: social media, ...", url: "https://knowem.com" },
+                    { title: "namecheckup", url: "https://namecheckup.com" },
+                    { title: "username search", url: "https://usersearch.org/index.php" },
+                    { title: "whatsmyname web", url: "https://whatsmyname.app" },
+                    { title: "search-people.online", url: "https://www.search-people.online" },
+                    { title: "i search social", url: "https://isearchsocial.com" },
+                    { title: "instant username search", url: "http://instantusername.com/#/" },
+                    { title: "gofindwho.com", url: "https://gofindwho.com" },
+                    { title: "suchmaschine für discord", url: "https://extraction.team/serverse.html" },
+                ]},
+                { name: "Noch Nicht Getestet", count: 1, links: [
+                    { title: "signalhire - find email or phone number - chrome web store", url: "https://chrome.google.com/webstore/detail/signalhire-find-email-or/aeidadjdhppdffggfgjpanbafaedankd?utm_source=chrome-ntp-icon" },
+                ]},
+                { name: "OCR & Texterkennung", count: 28, links: [
+                    { title: "2lingual", url: "https://2lingual.com/" },
+                    { title: "copyfish 🐟 free ocr software - chrome web store", url: "https://chrome.google.com/webstore/detail/copyfish-%f0%9f%90%9f-free-ocr-soft/eenjdnjldapjajjofmldgmkjaienebbj/related?hl=en" },
+                    { title: "free online ocr", url: "https://www.newocr.com/" },
+                    { title: "https://ocr.space/", url: "https://ocr.space/" },
+                    { title: "free online ocr - convert jpeg, png, gif, bmp, tiff, pdf, djvu to text", url: "https://www.newocr.com/" },
+                    { title: "best free ocr api, online ocr, searchable pdf - fresh 2018 ocr software", url: "https://ocr.space/" },
+                    { title: "google maps", url: "https://www.google.com/maps/contrib/105107656927929456474/reviews/@50.963215,6.9365535,14z/data=!4m3!8m2!3m1!1e1" },
+                    { title: "free online ocr - convert jpeg, png, gif, bmp, tiff, pdf, djvu to text", url: "https://www.newocr.com/" },
+                    { title: "best free ocr api, online ocr, searchable pdf - fresh 2018 ocr software", url: "https://ocr.space/" },
+                    { title: "https://www.newocr.com/", url: "http://newocr.com" },
+                    { title: "free online ocr", url: "http://www.onlineocr.net" },
+                    { title: "screenshot guru - online screen capture for websites", url: "https://screenshot.guru/" },
+                    { title: "publiccom", url: "https://publicwww.com/" },
+                    { title: "google übersetzer", url: "https://translate.google.de/?sl=fr" },
+                    { title: "deepl translator", url: "https://www.deepl.com/translator" },
+                    { title: "i2ocr", url: "http://www.i2ocr.com" },
+                    { title: "✿ our favorite set — &amp;#x000a;copypastecharacter.com", url: "https://www.copypastecharacter.com" },
+                    { title: "https://www.russtast.de", url: "https://www.russtast.de" },
+                    { title: "google translate", url: "http://translate.google.com" },
+                    { title: "project naptha", url: "https://chrome.google.com/webstore/detail/project-naptha/molncoemjfmpgdkbdlbjmhlcgniigdnf" },
+                    { title: "copyfish 🐟 free ocr software - chrome web store", url: "https://chrome.google.com/webstore/detail/copyfish-%f0%9f%90%9f-free-ocr-soft/eenjdnjldapjajjofmldgmkjaienebbj/related?hl=en" },
+                    { title: "gosintcon.de", url: "https://gosintcon.de" },
+                    { title: "power searching with google&amp;#x000a;      &amp;#x000a;      course", url: "https://coursebuilder.withgoogle.com/sample/course" },
+                    { title: "verification handbook 1 | datajournalism.com", url: "https://datajournalism.com/read/handbook/verification-1" },
+                    { title: "bird.tools/wp-content/uploads/2019/12/13082019_osint-guide_v2fin.1.pdf", url: "https://bird.tools/wp-content/uploads/2019/12/13082019_osint-guide_v2fin.1.pdf" },
+                    { title: "authentic8 | auflistung von webdiensten", url: "https://silo.authentic8.com/rs/431-rsm-422/images/authentic8_gd_open_dark_web_research_public.pdf" },
+                    { title: "so geht onlinerecherche 2.0: nützliche tools und strategien", url: "http://rechercheseminar.de/tools/#1556991998075-83f860b7-c104" },
+                    { title: "www.youtube.com/watch", url: "https://www.youtube.com/watch?v=opld4zfb5z0" },
+                ]},
+                { name: "Online Shopping", count: 7, links: [
+                    { title: "amazon", url: "https://www.amazon.de" },
+                    { title: "https://www.egun.de", url: "https://www.egun.de" },
+                    { title: "ebay", url: "https://www.ebay.de" },
+                    { title: "ebay (kleinanzeigen)", url: "https://www.ebay-kleinanzeigen.de" },
+                    { title: "kleider kreisel", url: "https://www.kleiderkreisel.de" },
+                    { title: "shpock", url: "https://www.shpock.com/de-de" },
+                    { title: "quoka", url: "https://www.quoka.de/mein-konto/login.html" },
+                ]},
+                { name: "Online Shopping Y", count: 6, links: [
+                    { title: "amazon", url: "https://www.amazon.de" },
+                    { title: "https://www.egun.de", url: "https://www.egun.de" },
+                    { title: "ebay", url: "https://www.ebay.de" },
+                    { title: "ebay (kleinanzeigen)", url: "https://www.ebay-kleinanzeigen.de" },
+                    { title: "shpock", url: "https://www.shpock.com/de-de" },
+                    { title: "quoka", url: "https://www.quoka.de/mein-konto/login.html" },
+                ]},
+                { name: "OSINT Tools & Recherche", count: 102, links: [
+                    { title: "seo tool station", url: "https://seotoolstation.com/" },
+                    { title: "&amp;quot;&amp;quot; - google search - auch bei bedarf jede andere suchmaschine nutzen!", url: "https://www.google.com/search?rlz=1c1chbf_dede906de906&amp;amp;sxsrf=alekk02bi4vnvi8bbfn1tuc9i2kiz_zypw%3a1603173937988&amp;amp;ei=mx6ox8pvo8n3kwxr8pjabw&amp;amp;q=%22%22&amp;amp;oq=%22%22&amp;amp;gs_lcp=cgzwc3ktywiqazieccmqjzieccmqjzieccmqjzieccmqjzieccmqjzieccmqjzieccmqjzieccmqjzieccmqjziecc4qj1clyrrypckuyo3zfggacab4aiabx4gbqagsaqeymaeaoaebqgehz3dzlxdpesabaq&amp;amp;sclient=psy-ab&amp;amp;ved=0ahukewidstiowmlsahxj-6qkhve5bngq4dudca0&amp;amp;uact=5" },
+                    { title: "on snapchat", url: "https://www.snapchat.com/add/nickname" },
+                    { title: "pay, send and save money with paypal", url: "https://paypal.com/paypalme/username" },
+                    { title: "osint.industries", url: "https://osint.industries/" },
+                    { title: "epieos", url: "https://epieos.com/" },
+                    { title: "facebook - normales suchfeld", url: "https://www.facebook.com/" },
+                    { title: "google contacts", url: "https://contacts.google.com/?hl=de&amp;amp;tab=rc" },
+                    { title: "whatsapp web", url: "https://web.whatsapp.com/" },
+                    { title: "facebook - normales suchfeld", url: "https://www.facebook.com/" },
+                    { title: "skype", url: "https://www.skype.com/" },
+                    { title: "&amp;quot;&amp;quot; - google search - auch bei bedarf andere suchmaschinen + schreibweisen benutzen!", url: "https://www.google.com/search?rlz=1c1chbf_dede906de906&amp;amp;sxsrf=alekk02vc4ytlpve9p5gjlvw-xcsmi3mbg%3a1603173173329&amp;amp;ei=nxuox5lfe5dnsaeopjmqcq&amp;amp;q=%22%22&amp;amp;oq=%22%22&amp;amp;gs_lcp=cgzwc3ktywiqazieccmqjzieccmqjzieccmqjzieccmqjzieccmqjziecc4qjzieccmqjzieccmqjzieccmqjzieccmqj1d7pwny-6cdyjd2a2gacab4aiabkggiaeickgedms4ymaeaoaebqgehz3dzlxdpesabaq&amp;amp;sclient=psy-ab&amp;amp;ved=0ahukewjszym8vclsahwqm-wkhq5sbpiq4dudca0&amp;amp;uact=5" },
+                    { title: "rückwärtssuche mit telefonnummer | das örtliche", url: "https://www.dasoertliche.de/rueckwaertssuche/" },
+                    { title: "amazon anmelden", url: "https://www.amazon.de/ap/signin?openid.pape.max_auth_age=0&amp;amp;openid.return_to=https%3a%2f%2fwww.amazon.de%2f%3fref_%3dnav_ya_signin&amp;amp;openid.identity=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0%2fidentifier_select&amp;amp;openid.assoc_handle=deflex&amp;amp;openid.mode=checkid_setup&amp;amp;openid.claimed_id=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0%2fidentifier_select&amp;amp;openid.ns=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0&amp;amp;" },
+                    { title: "paypal - vpn benutzen", url: "https://www.paypal.com/signin" },
+                    { title: "forgot password - vpn benutzen", url: "https://www.facebook.com/login/identify/?ctx=recover&amp;amp;from_login_screen=0" },
+                    { title: "x recovery - vpn benutzen", url: "https://x.com/i/flow/password_reset?input_flow_data=%7b&amp;quot;requested_variant&amp;quot;%3a&amp;quot;eyjwbgf0zm9ybsi6ilj3zwiifq%3d%3d&amp;quot;%7d" },
+                    { title: "dis.cool", url: "https://dis.cool" },
+                    { title: "disboard | öffentliche discord server liste", url: "https://disboard.org/de" },
+                    { title: "lullar com - suche eingrenzen profil per e-mail oder benutzername", url: "http://com.lullar.com/de" },
+                    { title: "reveal", url: "http://reveal-mklab.iti.gr/reveal/index.html" },
+                    { title: "forensically, free online photo forensics tools - 29a.ch", url: "https://29a.ch/photo-forensics/#level-sweep" },
+                    { title: "fotoforensics", url: "http://www.fotoforensics.com" },
+                    { title: "hive ai", url: "https://thehive.ai/" },
+                    { title: "facecheck.id", url: "https://facecheck.id/" },
+                    { title: "osint.link", url: "http://osint.link/" },
+                    { title: "digital journalism | osint essentials", url: "https://www.osintessentials.com/" },
+                    { title: "&amp;quot;&amp;quot;", url: "https://www.google.com/search?rlz=1c1chbf_dede906de906&amp;amp;sxsrf=alekk02vc4ytlpve9p5gjlvw-xcsmi3mbg%3a1603173173329&amp;amp;ei=nxuox5lfe5dnsaeopjmqcq&amp;amp;q=%22%22&amp;amp;oq=%22%22&amp;amp;gs_lcp=cgzwc3ktywiqazieccmqjzieccmqjzieccmqjzieccmqjzieccmqjziecc4qjzieccmqjzieccmqjzieccmqjzieccmqj1d7pwny-6cdyjd2a2gacab4aiabkggiaeickgedms4ymaeaoaebqgehz3dzlxdpesabaq&amp;amp;sclient=psy-ab&amp;amp;ved=0ahukewjszym8vclsahwqm-wkhq5sbpiq4dudca0&amp;amp;uact=5" },
+                    { title: "google finder", url: "https://tools.epieos.com/google-account.php" },
+                    { title: "ebay pw recovery", url: "https://accounts.ebay.de/acctxs/user?ru=https%3a%2f%2fwww.ebay.de%2f&amp;amp;hbi=0" },
+                    { title: "amazon anmelden", url: "https://www.amazon.de/ap/signin?openid.pape.max_auth_age=0&amp;amp;openid.return_to=https%3a%2f%2fwww.amazon.de%2f%3fref_%3dnav_ya_signin&amp;amp;openid.identity=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0%2fidentifier_select&amp;amp;openid.assoc_handle=deflex&amp;amp;openid.mode=checkid_setup&amp;amp;openid.claimed_id=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0%2fidentifier_select&amp;amp;openid.ns=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0&amp;amp;" },
+                    { title: "snapchat", url: "https://www.snapchat.com/" },
+                    { title: "log in to your paypal account", url: "https://www.paypal.com/signin" },
+                    { title: "osint.industries", url: "https://osint.industries/" },
+                    { title: "ʜᴇɴᴋ ᴠᴀɴ ᴇss (@henkvaness)", url: "https://twitter.com/henkvaness" },
+                    { title: "mw-osint (@mwosint)", url: "https://twitter.com/mwosint" },
+                    { title: "ris osint (@arnoreuser)", url: "https://twitter.com/arnoreuser" },
+                    { title: "osintgeek (@osintgeek)", url: "https://twitter.com/osintgeek" },
+                    { title: "𝕊𝕖𝕔𝕥𝕠𝕣𝟘𝟛𝟝 (@sector035)", url: "https://twitter.com/sector035" },
+                    { title: "osintcurious", url: "https://twitter.com/osintcurious" },
+                    { title: "bellingcat (@bellingcat)", url: "https://twitter.com/bellingcat" },
+                    { title: "dutch osintguy (@dutch_osintguy)", url: "https://twitter.com/dutch_osintguy" },
+                    { title: "technisette (@technisette)", url: "https://twitter.com/technisette" },
+                    { title: "jake creps (@jakecreps)", url: "https://twitter.com/jakecreps" },
+                    { title: "osint techniques (@osinttechniques)", url: "https://twitter.com/osinttechniques" },
+                    { title: "https://twitter.com/webbreacher", url: "https://twitter.com/webbreacher" },
+                    { title: "osint combine (@osintcombine)", url: "https://twitter.com/osintcombine" },
+                    { title: "https://twitter.com/wondersmith_rae", url: "https://twitter.com/wondersmith_rae" },
+                    { title: "serge courrier (@secou)", url: "https://twitter.com/secou" },
+                    { title: "osint tools - osint techniques", url: "https://www.osinttechniques.com/osint-tools.html#" },
+                    { title: "osint dojo - youtube", url: "https://www.youtube.com/c/osintdojo/videos" },
+                    { title: "bendobrown", url: "https://www.youtube.com/channel/ucw2wogsimr216a27kwg_aqg" },
+                    { title: "github", url: "https://github.com/cipher387/cheatsheets?tab=readme-ov-file" },
+                    { title: "free tools", url: "https://www.osintcombine.com/tools" },
+                    { title: "tools", url: "https://intelx.io/tools" },
+                    { title: "invid project - video verification", url: "https://invid-project.eu" },
+                    { title: "www.technisette.com/p/home nicht aufrufbar", url: "https://www.technisette.com/p/home" },
+                    { title: "key findings", url: "https://keyfindings.blog/" },
+                    { title: "osint.support aktuell nicht hilfreich", url: "https://osint.support/" },
+                    { title: "we are osintcurio.us geschlossen seit 03/2023", url: "https://osintcurio.us" },
+                    { title: "ip location finder", url: "http://iplocation.net" },
+                    { title: "centralops", url: "https://centralops.net" },
+                    { title: "geoip2 database demo", url: "https://www.maxmind.com/en/geoip-demo" },
+                    { title: "whois lookup, domain availability &amp;amp; ip search", url: "http://research.domaintools.com" },
+                    { title: "domain dossier", url: "https://centralops.net/co/domaindossier.aspx" },
+                    { title: "who.is", url: "http://who.is" },
+                    { title: "domainbigdata", url: "https://domainbigdata.com" },
+                    { title: "dnslytics", url: "https://dnslytics.com" },
+                    { title: "robtex", url: "https://www.robtex.com" },
+                    { title: "viewdns.info", url: "https://viewdns.info" },
+                    { title: "informationen über ipv4-/ipv6-adresse suchen - dein-ip-check.de", url: "https://www.dein-ip-check.de/suche/" },
+                    { title: "osint.sh", url: "https://osint.sh/" },
+                    { title: "rückwärtssuche mit telefonnummer | das örtliche", url: "https://www.dasoertliche.de/rueckwaertssuche/" },
+                    { title: "das örtliche telefonbuch einfach die telefonnummer finden", url: "https://dasoertliche.de" },
+                    { title: "signalhire - find email or phone number - chrome web store", url: "https://chrome.google.com/webstore/detail/signalhire-find-email-or/aeidadjdhppdffggfgjpanbafaedankd?utm_source=chrome-ntp-icon" },
+                    { title: "spiderfoot v2.12", url: "http://127.0.0.1:5001/scaninfo?id=27ffdd7b" },
+                    { title: "&amp;quot;00 49 1521 7412024&amp;quot; - google search", url: "https://www.google.com/search?q=%2200+49+1521+7412024%22&amp;amp;rlz=1c1chbd_dede852de852&amp;amp;oq=%2200+49+1521+7412024%22&amp;amp;aqs=chrome..69i57.2135j0j8&amp;amp;sourceid=chrome&amp;amp;ie=utf-8" },
+                    { title: "truecaller.com", url: "https://www.truecaller.com/" },
+                    { title: "01521 7412024 - sync.me phone lookup", url: "https://sync.me/search/?number=4915217412024" },
+                    { title: "facebook", url: "http://facebook.com" },
+                    { title: "https://www.invid-project.eu/tools-and-services/invid-verification-plugin/", url: "https://www.invid-project.eu/tools-and-services/invid-verification-plugin/" },
+                    { title: "nemec/snapchat-map-scraper", url: "https://github.com/nemec/snapchat-map-scraper" },
+                    { title: "nlitsme/youtube_tool", url: "https://github.com/nlitsme/youtube_tool" },
+                    { title: "trace labs osint vm - trace labs", url: "https://tracelabs.org/trace-labs-osint-vm" },
+                    { title: "yezz123/soig", url: "https://github.com/yezz123/soig" },
+                    { title: "a facial recognition tool for image-based data and graph analysis", url: "https://medium.com/analytics-vidhya/who-where-whomwith-wwww-a-facial-recognition-tool-for-image-based-data-gathering-and-graph-dd8f2b13c279" },
+                    { title: "nemec/snapchat-map-scraper", url: "https://github.com/nemec/snapchat-map-scraper" },
+                    { title: "nlitsme/youtube_tool", url: "https://github.com/nlitsme/youtube_tool" },
+                    { title: "trace labs osint vm - trace labs", url: "https://tracelabs.org/trace-labs-osint-vm" },
+                    { title: "yezz123/soig", url: "https://github.com/yezz123/soig" },
+                    { title: "bellingcat", url: "https://github.com/bellingcat" },
+                    { title: "opera", url: "http://opera.com" },
+                    { title: "icq", url: "http://icq.com" },
+                    { title: "paltalk", url: "http://paltalk.com" },
+                    { title: "skype", url: "http://skype.com" },
+                    { title: "bellingcat&amp;#39;s online investigation toolkit [bit.ly/bcattools]", url: "https://docs.google.com/spreadsheets/d/18rtqh8eg2q1xbo2clnyhiduk9jrpgwyr9di2uncoqjq/edit#gid=930747607" },
+                    { title: "osint tools", url: "https://www.osinttechniques.com/osint-tools.html#" },
+                    { title: "open source intelligence (osint) tools &amp;amp; resources", url: "https://osint.link" },
+                    { title: "osint framework", url: "https://osintframework.com" },
+                    { title: "inteltechniques.com", url: "https://inteltechniques.com" },
+                    { title: "osint", url: "http://rr.reuser.biz/" },
+                    { title: "osint tools", url: "https://www.aware-online.com/osint-tools/" },
+                ]},
+                { name: "PasswÃ¶rter & Zugang", count: 87, links: [
+                    { title: "facebook pw recovery", url: "https://www.facebook.com/login/identify/?ctx=recover&amp;amp;ars=facebook_login" },
+                    { title: "twitter pw recovery", url: "https://twitter.com/account/begin_password_reset" },
+                    { title: "twitch pw recovery", url: "https://www.twitch.tv/user/account-recovery" },
+                    { title: "instagram pw recovery", url: "https://www.instagram.com/accounts/password/reset/" },
+                    { title: "vk pw recovery", url: "https://vk.com/restore" },
+                    { title: "linkedin pw recovery", url: "https://www.linkedin.com/uas/request-password-reset?trk=guest_homepage-basic_forgot_password" },
+                    { title: "egun pw recovery", url: "https://www.egun.de/market/forgotpasswd.php" },
+                    { title: "ebay pw recovery", url: "https://accounts.ebay.de/acctxs/user?ru=https%3a%2f%2fwww.ebay.de%2f&amp;amp;hbi=0" },
+                    { title: "ebay kleinanzeigen pw recovery", url: "https://www.ebay-kleinanzeigen.de/m-passwort-vergessen.html" },
+                    { title: "steam-support - ich habe meinen steam-accountnamen oder das passwort vergessen", url: "https://help.steampowered.com/de/wizard/helpwithlogininfo?issueid=406" },
+                    { title: "discord", url: "https://discordapp.com/login" },
+                    { title: "recover your password - zig forums", url: "https://zigforums.com/login/password" },
+                    { title: "voat pw recovery", url: "https://voat.co/account/forgotpassword" },
+                    { title: "saidit.net", url: "https://saidit.net/password" },
+                    { title: "pastebin.com - password emailer", url: "https://pastebin.com/passmailer" },
+                    { title: "microsoft pw recovery", url: "https://account.live.com/username/recover?wreply=https://login.live.com/login.srf%3flc%3d1031%26mkt%3dde-de%26wa%3dwsignin1.0%26rpsnv%3d13%26ct%3d1574681519%26rver%3d7.1.6819.0%26wp%3dmbi_ssl%26wreply%3dhttps%253a%252f%252fwww.microsoft.com%252fde-de%252fwindows%26lc%3d1031%26id%3d74335%26aadredir%3d1%26contextid%3d08e4a9a72165866c%26bk%3d1574681519%26uaid%3dc6ee0ef3e61748b039faac4bda94847f&amp;amp;id=74335&amp;amp;mkt=de-de&amp;amp;lc=1031&amp;amp;uaid=c6ee0ef3e61748b039faac4bda94847f&amp;amp;uiflavor=web" },
+                    { title: "recover your apple id", url: "https://iforgot.apple.com/password/verify/appleid" },
+                    { title: "samsung account", url: "https://account.samsung.com/accounts/v1/community/findid#" },
+                    { title: "jappy pw recovery", url: "https://www.jappy.com/password/lostpassword" },
+                    { title: "quoka pw recovery", url: "https://www.quoka.de/mein-konto/passwort-vergessen.html" },
+                    { title: "myspace pw recovery", url: "https://myspace.com/forgotpassword" },
+                    { title: "ea games pw recovery", url: "https://signin.ea.com/p/web2/resetpassword?execution=e1765642245s1&amp;amp;initref=https%3a%2f%2faccounts.ea.com%3a443%2fconnect%2fauth%3fresponse_type%3dcode%26redirect_uri%3dhttps%253a%252f%252fwww.ea.com%252flogin_check%26state%3dc3ba5e06-a983-4631-9d38-a64a08b76252%26client_id%3deadotcom-web-server" },
+                    { title: "ubisoft connect pw recovery", url: "https://connect.ubisoft.com/forgot-password?appid=880650b9-35a5-4480-8f32-6a328eaa3aad&amp;amp;nexturl=https:%2f%2fstore.ubi.com%2fde%2fuplaynext%3ftype%3dlogin&amp;amp;genomeid=3874818c-b125-4514-8747-77912530647a&amp;amp;lang=de-de" },
+                    { title: "strava pw recovery", url: "https://www.strava.com/account/recover" },
+                    { title: "zig pw recovery", url: "https://zigforums.com/login/password" },
+                    { title: "kiwi farms", url: "https://kiwifarms.net" },
+                    { title: "julay.world: reset password", url: "https://julay.world/login.html" },
+                    { title: "pr0gramm.com", url: "https://pr0gramm.com" },
+                    { title: "endchan: reset password", url: "https://endchan.net/login.html" },
+                    { title: "anon.cafe: reset password", url: "https://anon.cafe/login.html" },
+                    { title: "amazon anmelden", url: "https://www.amazon.de/ap/signin?openid.pape.max_auth_age=0&amp;amp;openid.return_to=https%3a%2f%2fwww.amazon.de%2f%3fref_%3dnav_ya_signin&amp;amp;openid.identity=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0%2fidentifier_select&amp;amp;openid.assoc_handle=deflex&amp;amp;openid.mode=checkid_setup&amp;amp;openid.claimed_id=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0%2fidentifier_select&amp;amp;openid.ns=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0&amp;amp;" },
+                    { title: "https://www.paypal.com/de/signin", url: "https://www.paypal.com/de/signin" },
+                    { title: "gab.com", url: "https://gab.com/auth/password/new" },
+                    { title: "forgot password", url: "https://www.tumblr.com/forgot_password" },
+                    { title: "https://9gag.com/recover", url: "https://9gag.com/recover" },
+                    { title: "log in to xing", url: "https://login.xing.com/recovery" },
+                    { title: "pinterest - deutschland", url: "https://www.pinterest.de/password/reset/" },
+                    { title: "reddit", url: "https://www.reddit.com" },
+                    { title: "build software better, together", url: "https://github.com/password_reset" },
+                    { title: "stayfriends.de", url: "https://www.stayfriends.de/login/passwordlost" },
+                    { title: "https://9gag.com/recover", url: "https://9gag.com/recover" },
+                    { title: "adobe id", url: "https://auth.services.adobe.com/de_de/index.html?callback=https%3a%2f%2fims-na1.adobelogin.com%2fims%2fadobeid%2fadobedotcom-cc%2fadobeid%2ftoken%3fredirect_uri%3dhttps%253a%252f%252fwww.adobe.com%252fde%2523old_hash%253dref_cc%2526from_ims%253dtrue%253fclient_id%253dadobedotcom-cc%2526api%253dauthorize%2526scope%253dadobeid%252copenid%252ccreative_cloud%252cgnav%252cread_organizations%252cadditional_info.projectedproductcontext%252csao.acom_cloud_storage%252csao.stock%252csao.cce_private%252cadditional_info.roles%26state%3d%257b%2522ac%2522%253a%2522%2522%252c%2522jslibver%2522%253a%2522v2-v0.19.0-2-ga9be19e%2522%252c%2522nonce%2522%253a%25227212192104136549%2522%257d%26code_challenge_method%3dplain%26use_ms_for_expiry%3dtrue&amp;amp;client_id=adobedotcom-cc&amp;amp;scope=adobeid%2copenid%2ccreative_cloud%2cgnav%2cread_organizations%2cadditional_info.projectedproductcontext%2csao.acom_cloud_storage%2csao.stock%2csao.cce_private%2cadditional_info.roles&amp;amp;denied_callback=https%3a%2f%2fims-na1.adobelogin.com%2fims%2fdenied%2fadobedotcom-cc%3fredirect_uri%3dhttps%253a%252f%252fwww.adobe.com%252fde%2523old_hash%253dref_cc%2526from_ims%253dtrue%253fclient_id%253dadobedotcom-cc%2526api%253dauthorize%2526scope%253dadobeid%252copenid%252ccreative_cloud%252cgnav%252cread_organizations%252cadditional_info.projectedproductcontext%252csao.acom_cloud_storage%252csao.stock%252csao.cce_private%252cadditional_info.roles%26response_type%3dtoken%26state%3d%257b%2522ac%2522%253a%2522%2522%252c%2522jslibver%2522%253a%2522v2-v0.19.0-2-ga9be19e%2522%252c%2522nonce%2522%253a%25227212192104136549%2522%257d&amp;amp;state=%7b%22ac%22%3a%22%22%2c%22jslibver%22%3a%22v2-v0.19.0-2-ga9be19e%22%2c%22nonce%22%3a%227212192104136549%22%7d&amp;amp;relay=af720610-3293-4331-a7e4-d08348dfeb6f&amp;amp;locale=de_de&amp;amp;flow_type=token&amp;amp;idp_flow_type=login#/" },
+                    { title: "amazon anmelden", url: "https://www.amazon.de/ap/signin?openid.pape.max_auth_age=0&amp;amp;openid.return_to=https%3a%2f%2fwww.amazon.de%2f%3fref_%3dnav_ya_signin&amp;amp;openid.identity=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0%2fidentifier_select&amp;amp;openid.assoc_handle=deflex&amp;amp;openid.mode=checkid_setup&amp;amp;openid.claimed_id=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0%2fidentifier_select&amp;amp;openid.ns=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0&amp;amp;" },
+                    { title: "anon.cafe: reset password", url: "https://anon.cafe/login.html" },
+                    { title: "aol - login", url: "https://login.aol.com/?display=login&amp;amp;intl=de&amp;amp;src=fp-de&amp;amp;done=https%3a%2f%2fapi.login.aol.com%2foauth2%2fauthorize%3fclient_id%3dikryxmzuoerqqkut%26intl%3dde%26nonce%3de70zmrzrnueiwwuvuy4gxvy6bbj7kmfp%26redirect_uri%3dhttps%253a%252f%252foidc.www.aol.de%252fcallback%26response_type%3dcode%26scope%3dmail-r%2520openid%2520openid2%2520sdps-r%26src%3dfp-de%26state%3deyjhbgcioijsuzi1niisimtpzci6ijzmzjk0y2rhzdexztdjm2fjmdhkyzllyznjndq4ndrioddlmzy0zjcifq.eyjyzwrpcmvjdfvyasi6imh0dhbzoi8vd3d3lmfvbc5kzs8ifq.d6qo1wwf23mg22e-5mbrddmt1zacxvgqn9bejs0lxzq_tyryd7bv7ruaqusuysxqwwkwwa8zr9ykja98cfucbse1mocdguje2gvraz7q1z8co675t_dzxcrejijy8lnqeu4gq2ryh2fu_supm1o2hxjsrndbyxtfltl7lwobteq&amp;amp;prefill=0&amp;amp;prompt=login&amp;amp;chllngnm=fail" },
+                    { title: "ebay kleinanzeigen pw recovery", url: "https://www.ebay-kleinanzeigen.de/m-passwort-vergessen.html" },
+                    { title: "ea games pw recovery", url: "https://signin.ea.com/p/web2/resetpassword?execution=e1765642245s1&amp;amp;initref=https%3a%2f%2faccounts.ea.com%3a443%2fconnect%2fauth%3fresponse_type%3dcode%26redirect_uri%3dhttps%253a%252f%252fwww.ea.com%252flogin_check%26state%3dc3ba5e06-a983-4631-9d38-a64a08b76252%26client_id%3deadotcom-web-server" },
+                    { title: "ebay pw recovery", url: "https://accounts.ebay.de/acctxs/user?ru=https%3a%2f%2fwww.ebay.de%2f&amp;amp;hbi=0" },
+                    { title: "egun pw recovery", url: "https://www.egun.de/market/forgotpasswd.php" },
+                    { title: "endchan: reset password", url: "https://endchan.net/login.html" },
+                    { title: "eventbrite – anmelden und  registrieren", url: "https://www.eventbrite.de/signin/" },
+                    { title: "facebook pw recovery", url: "https://www.facebook.com/login/identify/?ctx=recover&amp;amp;ars=facebook_login" },
+                    { title: "gab.com", url: "https://gab.com/auth/password/new" },
+                    { title: "gmail", url: "https://accounts.google.com/signin/v2/identifier?service=mail&amp;amp;passive=true&amp;amp;rm=false&amp;amp;continue=https%3a%2f%2fmail.google.com%2fmail%2f%3fhl%3dde&amp;amp;ss=1&amp;amp;scc=1&amp;amp;ltmpl=googlemail&amp;amp;hl=de&amp;amp;emr=1&amp;amp;osid=1&amp;amp;flowname=glifwebsignin&amp;amp;flowentry=servicelogin" },
+                    { title: "gmx", url: "https://passwort.gmx.net/passwordrecovery/wicket/page?1&amp;amp;srttkn=c8a1d1f0-6296-42fa-b19c-26d26b753cf6" },
+                    { title: "gutefrage.net - passwort vergessen", url: "https://www.gutefrage.net/passwort_vergessen" },
+                    { title: "icloud", url: "https://www.icloud.com/" },
+                    { title: "jappy pw recovery", url: "https://www.jappy.com/password/lostpassword" },
+                    { title: "julay.world: reset password", url: "https://julay.world/login.html" },
+                    { title: "kiwi farms", url: "https://kiwifarms.net" },
+                    { title: "https://accounts.lidl.com/account/login?returnurl=%2fconnect%2fauthorize%2fcallback%3fcountry_code%3dde%26response_type%3dcode%26client_id%3dgermanyecommerceclient%26scope%3dopenid%2520profile%2520lidl.authentication%2520offline_access%26state%3dnrpw58grt8wxqpwawfrgqburttswu3wfktqkwb_kguo%253d%26redirect_uri%3dhttps%253a%252f%252fwww.lidl.de%252fuser-api%252fsignin-oidc%26nonce%3dvm-jvn-m3aiwvkhq7_hvlqfud-lahhobovsufkw_h88%26step%3dlogin%26language%3dde-de#login", url: "https://accounts.lidl.com/account/login?returnurl=%2fconnect%2fauthorize%2fcallback%3fcountry_code%3dde%26response_type%3dcode%26client_id%3dgermanyecommerceclient%26scope%3dopenid%2520profile%2520lidl.authentication%2520offline_access%26state%3dnrpw58grt8wxqpwawfrgqburttswu3wfktqkwb_kguo%253d%26redirect_uri%3dhttps%253a%252f%252fwww.lidl.de%252fuser-api%252fsignin-oidc%26nonce%3dvm-jvn-m3aiwvkhq7_hvlqfud-lahhobovsufkw_h88%26step%3dlogin%26language%3dde-de#login" },
+                    { title: "linkedin pw recovery", url: "https://www.linkedin.com/uas/request-password-reset?trk=guest_homepage-basic_forgot_password" },
+                    { title: "mail.ru", url: "https://mail.ru/" },
+                    { title: "microsoft pw recovery", url: "https://account.live.com/username/recover?wreply=https://login.live.com/login.srf%3flc%3d1031%26mkt%3dde-de%26wa%3dwsignin1.0%26rpsnv%3d13%26ct%3d1574681519%26rver%3d7.1.6819.0%26wp%3dmbi_ssl%26wreply%3dhttps%253a%252f%252fwww.microsoft.com%252fde-de%252fwindows%26lc%3d1031%26id%3d74335%26aadredir%3d1%26contextid%3d08e4a9a72165866c%26bk%3d1574681519%26uaid%3dc6ee0ef3e61748b039faac4bda94847f&amp;amp;id=74335&amp;amp;mkt=de-de&amp;amp;lc=1031&amp;amp;uaid=c6ee0ef3e61748b039faac4bda94847f&amp;amp;uiflavor=web" },
+                    { title: "myspace pw recovery", url: "https://myspace.com/forgotpassword" },
+                    { title: "pastebin.com - password emailer", url: "https://pastebin.com/passmailer" },
+                    { title: "paypal", url: "https://www.paypal.com/authflow/password-recovery/?country.x=de&amp;amp;locale.x=de_de&amp;amp;redirecturi=%252fsignin%252f" },
+                    { title: "pr0gramm.com", url: "https://pr0gramm.com" },
+                    { title: "quoka pw recovery", url: "https://www.quoka.de/mein-konto/passwort-vergessen.html" },
+                    { title: "recover your apple id", url: "https://iforgot.apple.com/password/verify/appleid" },
+                    { title: "recover your password - zig forums", url: "https://zigforums.com/login/password" },
+                    { title: "reddit", url: "https://www.reddit.com" },
+                    { title: "saidit.net", url: "https://saidit.net/password" },
+                    { title: "snapchat", url: "https://accounts.snapchat.com/accounts/login" },
+                    { title: "stayfriends.de", url: "https://www.stayfriends.de/login/passwordlost" },
+                    { title: "steam-support - ich habe meinen steam-accountnamen oder das passwort vergessen", url: "https://help.steampowered.com/de/wizard/helpwithlogininfo?issueid=406" },
+                    { title: "strava pw recovery", url: "https://www.strava.com/account/recover" },
+                    { title: "tumblr", url: "https://www.tumblr.com/forgot_password" },
+                    { title: "twitch pw recovery", url: "https://www.twitch.tv/user/account-recovery" },
+                    { title: "twitter pw recovery", url: "https://twitter.com/account/begin_password_reset" },
+                    { title: "ubisoft connect pw recovery", url: "https://connect.ubisoft.com/forgot-password?appid=880650b9-35a5-4480-8f32-6a328eaa3aad&amp;amp;nexturl=https:%2f%2fstore.ubi.com%2fde%2fuplaynext%3ftype%3dlogin&amp;amp;genomeid=3874818c-b125-4514-8747-77912530647a&amp;amp;lang=de-de" },
+                    { title: "vk pw recovery", url: "https://vk.com/restore" },
+                    { title: "voat pw recovery", url: "https://voat.co/account/forgotpassword" },
+                    { title: "web.de", url: "https://passwort.web.de/passwordrecovery/wicket/page?1&amp;amp;srttkn=b5eb4efd-fbf5-45bd-91fb-a290ecdd8378" },
+                    { title: "yahoo", url: "https://login.yahoo.com/?.lang=de-de&amp;amp;src=homepage&amp;amp;.done=https%3a%2f%2fde.yahoo.com%2f%3fp%3dus&amp;amp;pspid=2142153770&amp;amp;activity=ybar-signin" },
+                    { title: "xing", url: "https://login.xing.com/recovery" },
+                    { title: "zig pw recovery", url: "https://zigforums.com/login/password" },
+                ]},
+                { name: "Paywall Umgehen", count: 1, links: [
+                    { title: "paywall reader", url: "https://paywallreader.com/" },
+                ]},
+                { name: "Personensuche", count: 5, links: [
+                    { title: "free people search engine | zabasearch", url: "https://www.zabasearch.com/" },
+                    { title: "cvgadget.com - person search engine", url: "https://cvgadget.com/" },
+                    { title: "person / info zu name - personensuche yasni.de", url: "http://www.yasni.de/" },
+                    { title: "people and business search - public records - background check", url: "https://radaris.com/" },
+                    { title: "white pages | people finder - anywho", url: "https://www.anywho.com/whitepages" },
+                ]},
+                { name: "Private Accounts Kontakte X", count: 2, links: [
+                    { title: "github", url: "https://github.com/novitae/tenai" },
+                    { title: "kontakte bei privaten accounts - user agent switcher vorher umstellen!", url: "https://i.instagram.com/api/v1/fbsearch/accounts_recs/?include_friendship_status=true&amp;amp;target_user_id=hier_id" },
+                ]},
+                { name: "Register", count: 11, links: [
+                    { title: "northdata.de", url: "https://www.northdata.de" },
+                    { title: "handelsregister", url: "https://handelsregister.de" },
+                    { title: "bundesanzeiger", url: "https://www.bundesanzeiger.de/ebanzwww/wexsservlet" },
+                    { title: "unternehmensregister", url: "https://www.unternehmensregister.de/ureg/" },
+                    { title: "justizportal", url: "https://www.insolvenzbekanntmachungen.de" },
+                    { title: "northdata.de", url: "https://www.northdata.de" },
+                    { title: "handelsregister", url: "https://www.handelsregister.de/rp_web/welcome.xhtml" },
+                    { title: "bundesanzeiger", url: "https://www.bundesanzeiger.de/ebanzwww/wexsservlet" },
+                    { title: "unternehmensregister", url: "https://www.unternehmensregister.de/ureg/" },
+                    { title: "justizportal", url: "https://www.insolvenzbekanntmachungen.de" },
+                    { title: "ust-id-pruefen.de", url: "https://ust-id-pruefen.de/" },
+                ]},
+                { name: "Rufnummerabfrage", count: 2, links: [
+                    { title: "0172 7170689 / +491727170689 | truecaller", url: "https://www.truecaller.com/search/de/00491727170689" },
+                    { title: "0172 7170689 - sync.me phone lookup", url: "https://sync.me/search/?number=491727170689" },
+                ]},
+                { name: "Seitenbetreiber", count: 4, links: [
+                    { title: "builtwith technology lookup", url: "http://builtwith.com" },
+                    { title: "site explorer: the free backlink checker engine for seo.", url: "http://siteexplorer.info" },
+                    { title: "backlinks checker tool", url: "http://backlinkwatch.com" },
+                    { title: "https://openlinkprofiler.org", url: "https://openlinkprofiler.org" },
+                ]},
+                { name: "Software", count: 4, links: [
+                    { title: "tails", url: "https://tails.boum.org/" },
+                    { title: "kali", url: "https://www.kali.org/" },
+                    { title: "whonix ™", url: "https://www.whonix.org" },
+                    { title: "bluestacks - der beste android emulator für pc", url: "https://www.bluestacks.com/de/index.html?utm_campaign=aw-ded-brandsearch-de-ww-s-5-nofle&amp;amp;gclid=cjwkcaia__hvbraceiwabviuuw9jrjgfn62gyet4douyydja6heagratcfxwkq6eui0kw82owtnb7bocg_kqavd_bwe" },
+                ]},
+                { name: "Sonderzeichen", count: 3, links: [
+                    { title: "✿ our favorite set — &amp;#x000a;copypastecharacter.com", url: "https://www.copypastecharacter.com" },
+                ]},
+                { name: "Soziale Netzwerke & Messenger", count: 171, links: [
+                    { title: "vk faces (?)", url: "https://vkfaces.com" },
+                    { title: "stayfriends", url: "https://www.stayfriends.de/?pk_campaign=aw-brand&amp;amp;surpid=-5829yuwmzvysjt2g91nuo1cll25zdu5a85ycn&amp;amp;utm_campaign=9353&amp;amp;utm_medium=sea&amp;amp;utm_source=google-search&amp;amp;gclid=cjwkcaialo7ubraneiwa_vxq-0pwsymjjxrlhi8mrefk4tmvadfqwsmqy9behcs50a9cmlkrbqpzbxocnloqavd_bwe" },
+                    { title: "linkedin", url: "https://www.linkedin.com" },
+                    { title: "list of search operaters", url: "https://booleanstrings.com/2018/12/06/linkedin-operators-one-more-tip-sheet/" },
+                    { title: "user and occupation search", url: "https://freepeoplesearchtool.com/" },
+                    { title: "user search", url: "https://recruitin.net/" },
+                    { title: "reddit", url: "https://www.reddit.com" },
+                    { title: "user search", url: "https://atomiks.github.io/reddit-user-analyser/" },
+                    { title: "content search", url: "https://redditsearch.io/" },
+                    { title: "video downloader", url: "https://redv.co/" },
+                    { title: "export comments/saved items (login needed)", url: "https://redditmanager.com/" },
+                    { title: "phrase tracking and alerts (login needed)", url: "https://www.trackreddit.com/" },
+                    { title: "reverse image search", url: "http://karmadecay.com/?__cf_chl_jschl_tk__=79c7cb5cfc63fdba3df62a6438529355a2d95c4b-1584412891-0-aquehy3w0ikazh5jcg1fcw4q5sdvodf9cedx4ijfj1kzlu-rrxmvuqcp54tmpsxvnrcut1hro70lljtgt04syfiv_i9plhpnnzdoqa8l97_7z00epooxtdod2cj4c2uswjrlwpwne71tvw5fdg-7ozrq3zd3klevptmtccbouw5otafbuja14keyeqohimuhdhrjvo8lih-jwdbgbhel2tv6bnywph6mkymsdmtazir9kvb1i87eo_ozcrxtgllwuvtf9akz_lqhes801vhos-woftcckiswvspgf3m-xaimsi0ujgqtxzmzqglesqliqehelvcntvbyku-4ojjcv60" },
+                    { title: "tubeoffline", url: "https://www.tubeoffline.com" },
+                    { title: "reditr", url: "http://reditr.com" },
+                    { title: "pinterest", url: "https://www.pinterest.de" },
+                    { title: "xing", url: "https://xing.com" },
+                    { title: "discord", url: "https://discord.com/" },
+                    { title: "disboard | öffentliche discord server liste", url: "https://disboard.org/de" },
+                    { title: "imgur", url: "https://imgur.com/search?q=" },
+                    { title: "snap map", url: "http://map.snapchat.com/" },
+                    { title: "snapchat frühere emojis finden", url: "https://snapchat.com/add/username" },
+                    { title: "https://gravatar.com/avatar/hier_md5-hash_der_e-mail-adresse_eintragen", url: "https://gravatar.com/avatar/608e9061d80429483e3923d48ba84ff4" },
+                    { title: "https://gravatar.com/avatar/hier_md5-hash_der_e-mail-adresse_eintragen +.json für weitere daten", url: "https://gravatar.com/avatar/hier_md5-hash_der_e-mail-adresse_eintragen +.json für weitere daten" },
+                    { title: "snapchat story download &amp;amp; viewer", url: "https://snaplytics.io/snapchat-story-downloader/" },
+                    { title: "who posted what? - schlagwortsuche", url: "http://whopostedwhat.com/" },
+                    { title: "(2) manage your uploaded contacts and call and text history", url: "https://www.facebook.com/mobile/messenger/contacts/?deleting=1&amp;amp;deleting_contacts=1&amp;amp;focus_contacts=1" },
+                    { title: "facebook graph search by lookup-id.com", url: "https://lookup-id.com/facebooksearch.html" },
+                    { title: "🔍 facebook scanner", url: "http://stalkscan.com/" },
+                    { title: "peoplefindthor - the easy way to search for people on facebook", url: "https://peoplefindthor.dk/" },
+                    { title: "facebook video downloader - online download facebook videos", url: "http://getfbstuff.com/" },
+                    { title: "live - facebook search", url: "https://www.facebook.com/search/str/live/videos-live" },
+                    { title: "facebook-graph-search/facebook-graph-search-keywords at master · bardoczi/facebook-graph-search · github", url: "https://github.com/bardoczi/facebook-graph-search/blob/master/facebook-graph-search-keywords" },
+                    { title: "facebook-graph-operators-2018.pdf", url: "http://researchclinic.net/facebook/facebook-graph-operators-2018.pdf" },
+                    { title: "how to write facebook graph search queries - wikihow", url: "https://www.wikihow.com/write-facebook-graph-search-queries" },
+                    { title: "facebook intersect search tool | open source intelligence | australia | osint combine", url: "https://www.osintcombine.com/facebook-intersect-search-tool" },
+                    { title: "github - sowdust/searchbook-chrome: a chrome extension for executing some graph-like searches against facebook.", url: "https://github.com/sowdust/searchbook-chrome" },
+                    { title: "(27) facebook", url: "https://www.facebook.com/browse/mutual_friends/?uid=100009978376988&amp;amp;node=100021724383523" },
+                    { title: "deli", url: "https://webcache.googleusercontent.com/search?q=cache:1ubixy7l5lyj:https://www.pictame.com/user/leonora.30/followers/6678492173+&amp;amp;cd=12&amp;amp;hl=en&amp;amp;ct=clnk&amp;amp;gl=de" },
+                    { title: "the new facebook graph search – part 1 – we are osintcurio.us", url: "https://osintcurio.us/2019/08/22/the-new-facebook-graph-search-part-1/" },
+                    { title: "the new facebook graph search – part 2 – we are osintcurio.us", url: "https://osintcurio.us/2019/08/22/the-new-facebook-graph-search-part-2/" },
+                    { title: "https://graphsearch.thao.pw/api/graphsearch?q=169600263227424/likers&amp;amp;amount=100", url: "https://graphsearch.thao.pw/api/graphsearch?q=169600263227424/likers&amp;amp;amount=100" },
+                    { title: "fbstalker", url: "https://ladystalker.thao.pw/" },
+                    { title: "fuck facebook (tm)", url: "http://4wbwa6vcpvcr3vvf4qkhppgy56urmjcj2vagu2iqgp3z656xcmfdbiqd.onion.pet/" },
+                    { title: "find my facebook id", url: "https://commentpicker.com/find-facebook-id.php" },
+                    { title: "find my facebook id", url: "https://lookup-id.com/" },
+                    { title: "who posted what?", url: "https://whopostedwhat.com/" },
+                    { title: "api.icq.net/expressions/get?s=669777587&amp;amp;t=707007335", url: "http://api.icq.net/expressions/get?s=669777587&amp;amp;t=707007335" },
+                    { title: "get (64×64)", url: "https://u.icq.net/wim/expressions/get?s=669777587&amp;amp;t=724453144&amp;amp;f=native&amp;amp;type=ceilbigbuddyicon&amp;amp;r=0)" },
+                    { title: "https://ws2.kik.com/user/star12", url: "https://ws2.kik.com/user/star12" },
+                    { title: "profilepics.cf.kik.com//ts5kqosdr636ctjow4klf87pxpq//orig.jpg", url: "http://profilepics.cf.kik.com//ts5kqosdr636ctjow4klf87pxpq//orig.jpg" },
+                    { title: "https://ws2.kik.com/user/star", url: "https://ws2.kik.com/user/star" },
+                    { title: "orig.jpg (972×972)", url: "http://profilepics.cf.kik.com/ts5kqosdr636ctjow4klf87pxpq/orig.jpg" },
+                    { title: "vkvid.download", url: "https://vkvid.download" },
+                    { title: "vk video downloader online - mp3, mp4, hd!", url: "https://www.downloadvideosfrom.com/vk.php#" },
+                    { title: "vk faces", url: "https://vkfaces.com" },
+                    { title: "telegram", url: "http://web.telegram.org" },
+                    { title: "facebook messenger", url: "https://www.messenger.com" },
+                    { title: "whatsapp web", url: "https://web.whatsapp.com" },
+                    { title: "threema web", url: "https://web.threema.ch/#!/welcome" },
+                    { title: "wire", url: "https://app.wire.com/auth/?hl=en#login" },
+                    { title: "discord", url: "https://discordapp.com/login" },
+                    { title: "riot", url: "https://riot.im/app/#/welcome" },
+                    { title: "telegram", url: "http://web.telegram.org" },
+                    { title: "facebook messenger", url: "https://www.messenger.com" },
+                    { title: "welcome to whatsapp tools", url: "https://watools.io/" },
+                    { title: "whatsapp web", url: "https://web.whatsapp.com" },
+                    { title: "threema web", url: "https://web.threema.ch/#!/welcome" },
+                    { title: "wire", url: "https://app.wire.com/auth/?hl=en#login" },
+                    { title: "discord", url: "https://discordapp.com/login" },
+                    { title: "riot", url: "https://riot.im/app/#/welcome" },
+                    { title: "vinted", url: "https://www.vinted.de/" },
+                    { title: "avatar (96×96)", url: "https://api.skype.com/users/killahmaster14/profile/avatar" },
+                    { title: "facebook", url: "http://facebook.com" },
+                    { title: "twitter", url: "http://twitter.com" },
+                    { title: "instagram", url: "http://www.instagram.com" },
+                    { title: "vk", url: "http://vk.com" },
+                    { title: "google+", url: "http://aboutme.google.com" },
+                    { title: "stayfriends", url: "https://www.stayfriends.de/?pk_campaign=aw-brand&amp;amp;surpid=-5829yuwmzvysjt2g91nuo1cll25zdu5a85ycn&amp;amp;utm_campaign=9353&amp;amp;utm_medium=sea&amp;amp;utm_source=google-search&amp;amp;gclid=cjwkcaialo7ubraneiwa_vxq-0pwsymjjxrlhi8mrefk4tmvadfqwsmqy9behcs50a9cmlkrbqpzbxocnloqavd_bwe" },
+                    { title: "linkedin", url: "https://www.linkedin.com" },
+                    { title: "github", url: "https://www.github.com" },
+                    { title: "jodelweb.com", url: "http://jodelweb.com" },
+                    { title: "reddit", url: "https://www.reddit.com" },
+                    { title: "tellonym", url: "https://tellonym.me/login" },
+                    { title: "pinterest", url: "https://www.pinterest.de" },
+                    { title: "xing", url: "https://xing.com" },
+                    { title: "9gag", url: "https://9gag.com" },
+                    { title: "tumblr", url: "https://www.tumblr.com" },
+                    { title: "jappy", url: "https://www.jappy.com" },
+                    { title: "myspace", url: "https://myspace.com/signin" },
+                    { title: "skype anmeldung", url: "https://login.live.com/login.srf?wa=wsignin1.0&amp;amp;rpsnv=13&amp;amp;ct=1574697069&amp;amp;rver=7.1.6819.0&amp;amp;wp=mbi_ssl&amp;amp;wreply=https%3a%2f%2flw.skype.com%2flogin%2foauth%2fproxy%3fclient_id%3d572381%26redirect_uri%3dhttps%253a%252f%252fweb.skype.com%252fauth%252fposthandler%26state%3d57be92f5-ba7b-4270-9c3a-74338834545f%26site_name%3dlw.skype.com&amp;amp;lc=1033&amp;amp;id=293290&amp;amp;mkt=de-de&amp;amp;psi=skype&amp;amp;lw=1&amp;amp;cobrandid=2befc4b5-19e3-46e8-8347-77317a16a5a5&amp;amp;client_flight=reservedflight33%2creservedflight67" },
+                    { title: "www.strava.com", url: "https://www.strava.com/?hl=de" },
+                    { title: "gab social hosted on gab.com", url: "https://gab.com" },
+                    { title: "facebook", url: "https://www.facebook.com/" },
+                    { title: "login on twitter", url: "https://twitter.com/home" },
+                    { title: "instagram", url: "https://www.instagram.com/" },
+                    { title: "threads", url: "https://threads.net/@nickname_aus_ig" },
+                    { title: "telegram analytics", url: "https://tgstat.ru/en/search" },
+                    { title: "gofindwho | telegram", url: "https://cse.google.com/cse?cx=017922636351918147428:z4etstjsmlu#gsc.tab=0" },
+                    { title: "telegramdb.org", url: "https://www.telegramdb.org" },
+                    { title: "telegram search. find telegram channels, bots &amp;amp; groups.", url: "https://xtea.io/ts_en.html" },
+                    { title: "telegram channels", url: "https://tlgrm.eu/channels" },
+                    { title: "lyzem - telegram search", url: "https://lyzem.com/" },
+                    { title: "telegago", url: "https://cse.google.com/cse?q=+&amp;amp;cx=006368593537057042503:efxu7xprihg" },
+                    { title: "sherwan(@sherkurdi) | tiktok", url: "https://www.tiktok.com/@sherkurdi" },
+                    { title: "facebook graph search by lookup-id.com", url: "https://lookup-id.com/facebooksearch.html" },
+                    { title: "facebook watch", url: "https://www.facebook.com/watch/#@50.911685901,6.964047646000012,3z" },
+                    { title: "find my facebook id", url: "https://www.lookup-id.com" },
+                    { title: "instagram online viewer", url: "http://picpanzee.com" },
+                    { title: "instapuma", url: "http://www.instapuma.com" },
+                    { title: "instagram bilder &amp;amp; video download online | instagram videos &amp;amp; bilder &amp;amp; stories downloaden online | instaview.me | bilder &amp;amp; videos speichern fur pc &amp;amp; iphone &amp;amp; android &amp;amp; application", url: "https://instaview.me/de" },
+                    { title: "instazoom.de | instagram hd profilbild vergrößern!", url: "https://instazoom.de" },
+                    { title: "instadp - view insta dp at full size - instagram profile picture", url: "https://www.instadp.com" },
+                    { title: "insta stalker - instagram profile anonymously online user posts viewer", url: "https://insta-stalkerr.com" },
+                    { title: "online tools by mike dalisay - made by a developer, for a developer!", url: "http://www.codeofaninja.com/tools/" },
+                    { title: "find instagram username from ig user id", url: "https://commentpicker.com/instagram-username.php" },
+                    { title: "skype to email", url: "https://webresolver.nl/tools/skype_to_email" },
+                    { title: "email to skype", url: "https://webresolver.nl/tools/email_to_skype" },
+                    { title: "ip to skype", url: "https://webresolver.nl/tools/ip2skype" },
+                    { title: "skypli.com", url: "https://www.skypli.com/" },
+                    { title: "skype to email", url: "https://webresolver.nl/tools/skype_to_email" },
+                    { title: "email to skype", url: "https://webresolver.nl/tools/email_to_skype" },
+                    { title: "ip to skype", url: "https://webresolver.nl/tools/ip2skype" },
+                    { title: "skypli.com", url: "https://www.skypli.com/" },
+                    { title: "avatar.skype.com", url: "https://avatar.skype.com/v1/avatars/julia.mueller1990/public?returndefaultimage=false&amp;amp;size=l" },
+                    { title: "telegago", url: "https://cse.google.com/cse?&amp;amp;cx=006368593537057042503:efxu7xprihg#gsc.tab=0" },
+                    { title: "twitter advanced search", url: "https://twitter.com/search-advanced" },
+                    { title: "tweetdeck", url: "https://tweetdeck.twitter.com/#" },
+                    { title: "snap bird", url: "https://snapbird.org" },
+                    { title: "foller.me", url: "https://foller.me" },
+                    { title: "tweetbeaver", url: "https://tweetbeaver.com" },
+                    { title: "#onemilliontweetmap", url: "https://onemilliontweetmap.com/?center=25.505,-0.09&amp;amp;zoom=2&amp;amp;search=&amp;amp;timestep=0&amp;amp;timeselector=0&amp;amp;hashtag1=&amp;amp;hashtag2=sad&amp;amp;sidebar=yes&amp;amp;hashtagbattle=0&amp;amp;timerange=0&amp;amp;timerange=25&amp;amp;heatmap=0&amp;amp;sun=0&amp;amp;cluster=1" },
+                    { title: "twitter list copy", url: "http://projects.noahliebman.net/listcopy/connect.php" },
+                    { title: "old tweets", url: "http://tweettunnel.com/reverse.php" },
+                    { title: "ctrlq.org", url: "http://ctrlq.org/first/" },
+                    { title: "twitter videos downloaden - mp4 &amp;amp; mp3! online einfach &amp;amp; kostenlos", url: "https://www.downloadtwittervideo.com/de/" },
+                    { title: "twxplorer", url: "https://twxplorer.knightlab.com" },
+                    { title: "analyze twitter followers", url: "https://followerwonk.com/analyze" },
+                    { title: "tweeterid", url: "https://tweeterid.com" },
+                    { title: "trendsmap", url: "https://www.trendsmap.com" },
+                    { title: "twiangulate", url: "http://twiangulate.com/search/" },
+                    { title: "twitter analytics", url: "https://socialbearing.com" },
+                    { title: "vkvid.download", url: "https://vkvid.download" },
+                    { title: "vk video downloader online - mp3, mp4, hd!", url: "https://www.downloadvideosfrom.com/vk.php#" },
+                    { title: "von id zu account", url: "https://twitter.com/intent/user?user_id=735802122021838849" },
+                    { title: "tweeterid - twitter id and username converter", url: "https://tweeterid.com/" },
+                    { title: "erweiterte twitter suche", url: "https://twitter.com/search-advanced" },
+                    { title: "search.pdf | docdroid", url: "https://www.docdroid.net/bqtm8ah/search.pdf#page=4" },
+                    { title: "using standard search — twitter developers", url: "https://developer.twitter.com/en/docs/tweets/search/guides/standard-operators.html" },
+                    { title: "geosocial footprint", url: "http://geosocialfootprint.com/" },
+                    { title: "tweet mapper :: index", url: "https://keitharm.me/projects/tweet/" },
+                    { title: "get tags – tags", url: "https://tags.hawksey.info/get-tags/" },
+                    { title: "tweetbeaver - home of really useful twitter tools", url: "https://tweetbeaver.com/" },
+                    { title: "home page", url: "https://twopcharts.com/" },
+                    { title: "analysis of twitter accounts", url: "https://accountanalysis.lucahammer.com/" },
+                    { title: "foller.me analytics for twitter", url: "https://foller.me/" },
+                    { title: "tweepdiff - find out who you&amp;#39;re missing on twitter", url: "http://tweepdiff.com/" },
+                    { title: "analysis of twitter accounts | accountanalysis", url: "https://accountanalysis.app/" },
+                    { title: "using standard search — twitter developers", url: "https://developer.twitter.com/en/docs/tweets/search/guides/standard-operators" },
+                    { title: "tweetdeck", url: "https://tweetdeck.twitter.com/" },
+                    { title: "tweepdiff - find out who you&amp;#39;re missing on twitter", url: "https://tweepdiff.com/" },
+                    { title: "help &amp;amp; tips | followthehashtag // free twitter search analytics and business intelligence tool", url: "http://followthehashtag.com/help/" },
+                    { title: "treeverse - visualize twitter conversations", url: "https://chrome.google.com/webstore/detail/treeverse/aahmjdadniahaicebomlagekkcnlcila" },
+                    { title: "twitteridfinder", url: "https://twiteridfinder.com/" },
+                    { title: "tweeterid", url: "https://tweeterid.com" },
+                    { title: "find twitter id", url: "https://codeofaninja.com/tools/find-twitter-id/" },
+                    { title: "von id zum account", url: "https://twitter.com/i/connect_people?user_id=1291067679390957571" },
+                    { title: "twitter advanced search", url: "https://twitter.com/search-advanced" },
+                    { title: "𝚑𝚎𝚗𝚔 𝚟𝚊𝚗 𝚎𝚜𝚜 on twitter (filterliste)", url: "https://twitter.com/henkvaness/status/1627763709807575041/photo/1" },
+                    { title: "bildersuche vk", url: "http://searchface.ru/" },
+                    { title: "api methods | für entwickler | vk", url: "https://vk.com/dev/methods" },
+                ]},
+                { name: "Spezielle Sm Personen", count: 11, links: [
+                    { title: "personensuche für deutschland", url: "http://www.namenfinden.de" },
+                    { title: "gofindwho.com", url: "https://gofindwho.com" },
+                    { title: "pipl", url: "https://pipl.com" },
+                    { title: "zaba search", url: "https://zabasearch.com" },
+                    { title: "people and business search - public records  - background check", url: "https://radaris.com" },
+                    { title: "yasni", url: "http://www.yasni.de" },
+                    { title: "social searcher", url: "https://www.social-searcher.com" },
+                    { title: "thats them", url: "https://thatsthem.com" },
+                    { title: "peekyou.com", url: "https://peekyou.com" },
+                    { title: "white pages", url: "https://www.whitepages.com" },
+                    { title: "radaris germany: kostenlose personensuche, stammbaum und ahnenforschung, strafregister, leute finden", url: "http://radaris.de" },
+                ]},
+                { name: "Spieleplattformen X", count: 4, links: [
+                    { title: "cod warzone tracker", url: "https://cod.tracker.gg/" },
+                    { title: "cod warzone stats tracker", url: "https://cod.tracker.gg/warzone" },
+                    { title: "cod stats tracker", url: "https://codstats.net/" },
+                    { title: "psnprofiles • psn trophy tracking, stats, guides &amp;amp; leaderboards", url: "https://psnprofiles.com/" },
+                ]},
+                { name: "Suche In Der Bios X", count: 1, links: [
+                    { title: "analyze twitter followers", url: "https://followerwonk.com/analyze" },
+                ]},
+                { name: "Suche Nach Accounts Und Hashtags Y", count: 2, links: [
+                    { title: "search users and hashtags", url: "https://vidnice.com/" },
+                    { title: "open source intelligence", url: "https://www.osintcombine.com/tiktok-quick-search" },
+                ]},
+                { name: "Suche Nach Bergen X", count: 3, links: [
+                    { title: "peakery.com", url: "https://peakery.com/" },
+                    { title: "peakvisor.com", url: "https://peakvisor.com/" },
+                    { title: "der berg ruft! - peakfinder", url: "https://www.peakfinder.org/de/" },
+                ]},
+                { name: "Suche Nach Der Id  Nach Dem Account...", count: 4, links: [
+                    { title: "find my instagram user id", url: "https://commentpicker.com/instagram-user-id.php" },
+                    { title: "find instagram username from ig user id", url: "https://commentpicker.com/instagram-username.php" },
+                    { title: "direkte url von id zu profil", url: "https://www.instagram.com/graphql/query/?query_hash=c9100bf9110dd6361671f113dd02e7d6&amp;amp;variables={%22user_id%22:%2232463434727%22,%22include_chaining%22:false,%22include_reel%22:true,%22include_suggested_users%22:false,%22include_logged_out_extras%22:false,%22include_highlight_reels%22:false,%22include_related_profiles%22:false}" },
+                    { title: "id zu profil", url: "https://www.instagram.com/uid/hier_id_eintragen" },
+                ]},
+                { name: "Suche Nach Hashtags Y", count: 1, links: [
+                    { title: "open source intelligence", url: "https://www.osintcombine.com/tiktok-quick-search" },
+                ]},
+                { name: "Suche Nach Posts Zu Einem Bestimmte...", count: 1, links: [
+                    { title: "who posted what?", url: "https://whopostedwhat.com/" },
+                ]},
+                { name: "Suche Nach Rufnummern", count: 2, links: [
+                    { title: "signalhire", url: "https://chrome.google.com/webstore/detail/signalhire-find-email-or/aeidadjdhppdffggfgjpanbafaedankd/related?hl=en" },
+                    { title: "signalhire", url: "https://addons.mozilla.org/en-us/firefox/addon/signalhire-best-contact-finder/?src=search" },
+                ]},
+                { name: "Suchmaschinen & Suche", count: 69, links: [
+                    { title: "dorkgpt", url: "https://dorkgpt.com/" },
+                    { title: "https://snoop-ghost.medium.com/google-dork-47d98900d6cc", url: "https://snoop-ghost.medium.com/google-dork-47d98900d6cc" },
+                    { title: "google bilder", url: "https://www.google.de/imghp?hl=de" },
+                    { title: "bing image search", url: "https://www.bing.com/?scope=images&amp;amp;nr=1&amp;amp;form=noform" },
+                    { title: "yahoo image search", url: "https://images.search.yahoo.com" },
+                    { title: "yandex image search", url: "https://yandex.com/images/" },
+                    { title: "baidu", url: "https://image.baidu.com" },
+                    { title: "startpage.com - the world&amp;#39;s most private search engine", url: "https://www.startpage.com/eng/pics.html" },
+                    { title: "яндекс", url: "https://yandex.ru/" },
+                    { title: "яндекс: задан пустой поисковый запрос", url: "https://yandex.ru/people/search?lr=98" },
+                    { title: "how to restore image search functions | boolean strings", url: "https://booleanstrings.com/2019/09/01/how-to-restore-image-search-functions/" },
+                    { title: "talkwalker alerts, the best free and easy alternative to google alerts - talkwalker", url: "https://www.talkwalker.com/de/alerts" },
+                    { title: "darksearch - the 1st dark web search engine", url: "https://darksearch.io/" },
+                    { title: "osint applications for google dorks – jake creps", url: "https://jakecreps.com/2018/09/10/osint-applications-for-google-dorks/" },
+                    { title: "mastering google search operators in 67 easy steps", url: "https://moz.com/blog/mastering-google-search-operators-in-67-steps" },
+                    { title: "google dorks list 2019 - a complete cheat sheet (new)", url: "https://gbhackers.com/latest-google-dorks-list/" },
+                    { title: "exploring google hacking techniques", url: "https://securitytrails.com/blog/google-hacking-techniques" },
+                    { title: "open source intelligence(osint), part 4: google hacking to find unsecured web cams", url: "https://www.hackers-arise.com/single-post/2019/05/31/open-source-intelligenceosint-part-4-google-hacking-to-find-unsecured-web-cams" },
+                    { title: "reverse google analytics", url: "https://osint.sh/analytics/" },
+                    { title: "find websites your competitor owns - competitor analysis tool by analyze id", url: "http://analyzeid.com/" },
+                    { title: "ua-4333380 - spyonweb&amp;#39;s report about ua-4333380", url: "http://spyonweb.com/ua-4333380" },
+                    { title: "files: get  |  drive rest api v2  |  google developers", url: "https://developers.google.com/drive/api/v2/reference/files/get?apix_params=%7b%22fileid%22%3a%220bz_kktdimg42tdjqukfhc1his28%22%7d" },
+                    { title: "google maps", url: "https://www.google.com/maps/contrib/105107656927929456474/reviews/" },
+                    { title: "world social media platforms", url: "https://www.osintcombine.com/world-social-media-platforms" },
+                    { title: "google maps", url: "http://maps.google.com/" },
+                    { title: "bing maps", url: "http://www.bing.com/maps/" },
+                    { title: "yandex", url: "https://yandex.ru/maps" },
+                    { title: "百度地图", url: "http://map.baidu.com" },
+                    { title: "etools.ch - die transparente meta-suchmaschine aus der schweiz", url: "https://www.etools.ch/" },
+                    { title: "metager", url: "https://metager.de" },
+                    { title: "https://www.etools.ch", url: "https://www.etools.ch" },
+                    { title: "google", url: "https://google.com" },
+                    { title: "bing", url: "http://bing.com" },
+                    { title: "alexa", url: "https://www.alexa.com/topsites" },
+                    { title: "yandex", url: "http://yandex.ru" },
+                    { title: "metager", url: "https://metager.de" },
+                    { title: "ecosia", url: "https://www.ecosia.org" },
+                    { title: "startpage", url: "https://www.startpage.com" },
+                    { title: "i search from", url: "https://isearchfrom.com" },
+                    { title: "google", url: "https://google.com" },
+                    { title: "bing", url: "http://bing.com" },
+                    { title: "yandex", url: "http://yandex.ru" },
+                    { title: "baidu", url: "http://www.baidu.com/" },
+                    { title: "duck duck go", url: "https://duckduckgo.com/" },
+                    { title: "startpage", url: "https://www.startpage.com" },
+                    { title: "million short", url: "https://millionshort.com" },
+                    { title: "shodan", url: "https://www.shodan.io/" },
+                    { title: "intelligence x", url: "https://intelx.io/tools" },
+                    { title: "such2.com :: beta service", url: "https://www.such2.com" },
+                    { title: "google advanced search operators", url: "https://docs.google.com/document/d/1ydvajjel1eybwtlfj9tpfbte5ibadkqfzrqabzxqxgs/edit" },
+                    { title: "advanced operator reference", url: "https://docs.microsoft.com/en-us/previous-versions/bing/search/ff795620(v=msdn.10)" },
+                    { title: "google", url: "https://jakecreps.com/2018/09/10/osint-applications-for-google-dorks/" },
+                    { title: "google advanced search operators", url: "https://docs.google.com/document/d/1ydvajjel1eybwtlfj9tpfbte5ibadkqfzrqabzxqxgs/edit" },
+                    { title: "exploring google hacking techniques", url: "https://securitytrails.com/blog/google-hacking-techniques" },
+                    { title: "mastering google search operators in 67 easy steps", url: "https://moz.com/blog/mastering-google-search-operators-in-67-steps" },
+                    { title: "google dorks list 2019 - a complete cheat sheet (new)", url: "https://gbhackers.com/latest-google-dorks-list/" },
+                    { title: "google search operators: the complete list (42 advanced operators)", url: "https://ahrefs.com/blog/google-advanced-search-operators/" },
+                    { title: "mit diesen 11 tricks nutzt ihr die google-suche wie ein profi", url: "https://www.vice.com/de/article/9k895y/google-suche-elf-profi-tricks-bessere-suchergebnisse-operatoren-maximalfunktion" },
+                    { title: "i search from (?)", url: "https://isearchfrom.com" },
+                    { title: "google search operators [2020 seo]", url: "https://moz.com/learn/seo/search-operators" },
+                    { title: "synopse der wichtigsten suchoperatoren für google, yandex und bing – bashinhos osint tipps", url: "https://bashinho.de/2024/06/27/synopse-der-wichtigsten-suchoperatoren-fuer-google-yandex-und-bing/" },
+                    { title: "bing", url: "http://www.bing.com/?scope=video" },
+                    { title: "dogpile", url: "https://www.dogpile.com/?qc=video" },
+                    { title: "google videos", url: "https://www.google.com/videohp" },
+                    { title: "google advanced video search", url: "https://www.google.com/advanced_video_search" },
+                    { title: "yahoo video search", url: "http://video.search.yahoo.com" },
+                    { title: "yivster.com", url: "https://yivster.com/" },
+                    { title: "instantstreetview", url: "https://www.instantstreetview.com" },
+                    { title: "mapillary", url: "https://www.mapillary.com" },
+                ]},
+                { name: "Tastaturen", count: 3, links: [
+                    { title: "https://www.russtast.de", url: "https://www.russtast.de" },
+                    { title: "arabische tastatur 2020 - لوحة مفاتيح عربية - ممتـــــــــازة", url: "http://www.arabisch.tv/arabisch-tastatur/" },
+                    { title: "https://www.lexilogos.com/clavier/index.htm", url: "https://www.lexilogos.com/clavier/index.htm" },
+                ]},
+                { name: "Umstellen Auf Json  Manchmal  Y", count: 1, links: [
+                    { title: "https://www.instagram.com/&amp;lt;user-id&amp;gt;/?_a=1", url: "https://www.instagram.com/&amp;lt;user-id&amp;gt;/?_a=1" },
+                ]},
+                { name: "Vergleich Von Nutzern X", count: 2, links: [
+                    { title: "analyze twitter followers", url: "https://followerwonk.com/analyze" },
+                    { title: "tweepdiff", url: "https://tweepdiff.com/" },
+                ]},
+                { name: "Video & Downloads", count: 88, links: [
+                    { title: "home", url: "https://you-tldr.com/" },
+                    { title: "laden sie untertitel von youtube, facebook, viki, dailymotion &amp;amp; more herunter", url: "https://savesubs.com/de" },
+                    { title: "downsub", url: "https://downsub.com/" },
+                    { title: "laden sie instagram reels online herunter – reels downloader", url: "https://indown.io/reels/de" },
+                    { title: "stealthgram.com", url: "https://stealthgram.com/" },
+                    { title: "cobalt.tools", url: "https://cobalt.tools/" },
+                    { title: "vkvid.download", url: "https://vkvid.download" },
+                    { title: "vk video downloader online - mp3, mp4, hd!", url: "https://www.downloadvideosfrom.com/vk.php#" },
+                    { title: "twitter downloader", url: "http://www.downloadtwittervideo.com/" },
+                    { title: "youtube, facebook downloader", url: "http://en.savefrom.net/" },
+                    { title: "instagram downloader", url: "http://www.downloadvideosfrom.com/instagram.php" },
+                    { title: "download youtube, twitch.tv, youku, tudou", url: "https://keepvid.com/" },
+                    { title: "periscope downloader", url: "http://downloadperiscopevideos.com/" },
+                    { title: "download facebook, twitter, vimeo, ustream", url: "http://savevideo.me/" },
+                    { title: "yout", url: "https://yout.com/" },
+                    { title: "download social media videos without tools", url: "https://www.osintcombine.com/post/download-social-media-videos-without-tools" },
+                    { title: "download video comments", url: "http://ytcomments.klostermann.ca/" },
+                    { title: "facebook video herunterladen online x", url: "https://fdown.net/de/" },
+                    { title: "cobalt.tools", url: "https://cobalt.tools/" },
+                    { title: "cobalt.tools", url: "https://cobalt.tools/" },
+                    { title: "online video downloader - videos downloaden kostenlos", url: "https://de.savefrom.net/7/" },
+                    { title: "deturl", url: "http://deturl.com/" },
+                    { title: "twitter video downloader: download twitter videos &amp;amp; gif online", url: "https://botdownloader.com/twitter-video-downloader" },
+                    { title: "ssstwitter.com", url: "https://ssstwitter.com" },
+                    { title: "savefrom.net", url: "https://en.savefrom.net" },
+                    { title: "save the video - free online video downloader", url: "https://savethevideo.net" },
+                    { title: "twitter video downloader online", url: "https://twdown.net" },
+                    { title: "twitter video downloader", url: "http://twittervideodownloader.com" },
+                    { title: "cobalt.tools", url: "https://cobalt.tools/" },
+                    { title: "cobalt.tools", url: "https://cobalt.tools/" },
+                    { title: "tiktok downloader ohne wasserzeichen online", url: "https://ssstik.io/de" },
+                    { title: "https://citizenevidence.amnestyusa.org/", url: "https://citizenevidence.amnestyusa.org/" },
+                    { title: "online video downloader - videos downloaden kostenlos", url: "https://de.savefrom.net/7/" },
+                    { title: "deturl", url: "http://deturl.com/" },
+                    { title: "y2mate", url: "https://y2mate.com" },
+                    { title: "amnesty youtube data viewer", url: "https://citizenevidence.amnestyusa.org/" },
+                    { title: "intelx", url: "https://intelx.io/tools?tab=youtube" },
+                    { title: "youtube metadata", url: "https://mattw.io/youtube-metadata/" },
+                    { title: "youtube metadata bulk", url: "https://mattw.io/youtube-metadata/bulk" },
+                    { title: "youtube channel crawler", url: "https://www.channelcrawler.com/" },
+                    { title: "social blade: youtube statistics", url: "https://socialblade.com/" },
+                    { title: "youtube comment finder", url: "https://ytcomment.kmcat.uk" },
+                    { title: "savesubs: download subtitles from youtube", url: "https://savesubs.com" },
+                    { title: "https://www.youtube.com/hashtag/berlin", url: "https://www.youtube.com/hashtag/berlin" },
+                    { title: "facebook watch x", url: "https://www.facebook.com/watch/#@50.911685901,6.964047646000012,3z" },
+                    { title: "watch frame by frame", url: "http://www.watchframebyframe.com" },
+                    { title: "extract meta data", url: "https://citizenevidence.amnestyusa.org" },
+                    { title: "youtube downloader - downloader für youtube videos und audio", url: "https://www.y2mate.com/de1/home" },
+                    { title: "online video downloader - videos downloaden kostenlos", url: "https://de.savefrom.net/7/" },
+                    { title: "easy screen ocr", url: "https://easyscreenocr.com/" },
+                    { title: "download and save facebook videos free!", url: "https://www.tubeoffline.com/download-facebook-videos.php#.w07wptizaim" },
+                    { title: "hooktube", url: "https://hooktube.com/" },
+                    { title: "facebook video downloader online", url: "https://www.fbdown.net/" },
+                    { title: "keepvid: youtube video downloader, download youtube, facebook, dailymotion to mp4 online", url: "https://keepvid.pro/" },
+                    { title: "socialsnapper", url: "https://socialsnapper.net/" },
+                    { title: "twitter video downloader", url: "https://www.savetweetvid.com/" },
+                    { title: "youtube", url: "https://youtube.com" },
+                    { title: "twitch", url: "http://www.twitch.tv" },
+                    { title: "bitchute", url: "https://www.bitchute.com" },
+                    { title: "liveleak", url: "https://liveleak.com" },
+                    { title: "deathaddict", url: "https://deathaddict.co" },
+                    { title: "pew tube", url: "http://www.mypewtube.com" },
+                    { title: "facebook watch", url: "https://www.facebook.com/watch/#@,,10z@50.958426723359935,6.943359374999999,4z" },
+                    { title: "youtube", url: "https://youtube.com" },
+                    { title: "twitch", url: "http://www.twitch.tv" },
+                    { title: "bitchute", url: "https://www.bitchute.com" },
+                    { title: "liveleak", url: "https://liveleak.com" },
+                    { title: "deathaddict", url: "https://deathaddict.co" },
+                    { title: "facebook watch", url: "https://www.facebook.com/watch/#@,,10z@50.958426723359935,6.943359374999999,4z" },
+                    { title: "snap map", url: "https://map.snapchat.com" },
+                    { title: "who stole my pictures? (ff)", url: "https://addons.mozilla.org/en-us/firefox/addon/who-stole-my-pictures/" },
+                    { title: "video verification invid (ff and chrome)", url: "http://www.invid-project.eu/tools-and-services/invid-verification-plugin/" },
+                    { title: "reverse image search", url: "https://addons.mozilla.org/en- gb/firefox/addon/image-reverse-search" },
+                    { title: "who stole my picture", url: "https://addons.mozilla.org/en-us/firefox/addon/whostole- my-pictures" },
+                    { title: "image search options", url: "https://addons.mozilla.org/en-us/firefox/addon/image-search-options/" },
+                    { title: "search by image on aliexpress – get this extension for 🦊 firefox (en-us)", url: "https://addons.mozilla.org/en-us/firefox/addon/search-by-image-on-ali/" },
+                    { title: "reveye reverse image search", url: "https://addons.mozilla.org/en-us/firefox/addon/reveye-ris/" },
+                    { title: "invid-fake video news debunker", url: "https://chrome.google.com/webstore/detail/fake-video-news-debunker/mhccpoafgdgbhnjfhkcmgknndkeenfhe?hl=en" },
+                    { title: "firstdraftnewscheck", url: "https://chrome.google.com/webstore/detail/firstdraftnewscheck/japockpeaaanknlkhagilkgcledilbfk" },
+                    { title: "reveye image search", url: "https://chrome.google.com/webstore/detail/reveye-reverse-image-sear/keaaclcjhehbbapnphnmpiklalfhelgf?hl=en" },
+                    { title: "reverse image search", url: "https://chrome.google.com/webstore/detail/reverseimage- search/cdgbjhkjjghbjjikgjkkpljlmnpcakco" },
+                    { title: "who stole my picture", url: "https://chrome.google.com/webstore/detail/whostole- my-pictures/mcdbnfhkikiofkkicppioekloflmaibd" },
+                    { title: "search by image on aliexpress", url: "https://chrome.google.com/webstore/detail/aliexpress-search-by-imag/ecgllillhilocegdanfdmbfnjonmhpie?utm_source=chrome-ntp-icon" },
+                    { title: "imagus - chrome web store", url: "https://chrome.google.com/webstore/detail/imagus/immpkjjlgappgfkkfieppnmlhakdmaab?hl=de" },
+                    { title: "bellingcat filename finder", url: "https://chromewebstore.google.com/detail/bellingcat-filename-finde/fdhodjpkigpaachejkipcghppfnnfdmp?hl=de" },
+                    { title: "diycaptions - get youtube captions, automatic captions, and subtitles as text", url: "https://www.diycaptions.com/get-automatic-captions-as-text/" },
+                    { title: "503 service unavailable", url: "https://www.secbiz.org/youtube-tracer/" },
+                    { title: "invideo for youtube", url: "https://chrome.google.com/webstore/detail/invideo-for-youtube/iacbjlffnpbhgkgknabhkfmlcpdcigab?hl=de" },
+                ]},
+                { name: "Visualisierung", count: 1, links: [
+                    { title: "www.osintcombine.tools", url: "https://osintcombine.tools" },
+                ]},
+                { name: "Von Id Zu Account X", count: 1, links: [
+                    { title: "https://www.tiktok.com/@ideintragen", url: "https://www.tiktok.com/share/user/ideintragen" },
+                ]},
+                { name: "Weitere Hilfreiche Informationen", count: 1, links: [
+                    { title: "keyserver", url: "https://www.heise.de/security/dienste/keyserver-474468.html" },
+                ]},
+                { name: "Weitere Hilfsmittel", count: 4, links: [
+                    { title: "aha! – das salafismus-lexikon: begriffe, symbole &amp;amp; akteure", url: "https://antworten-auf-salafismus.de/salafismus/glossary/" },
+                    { title: "my osint training’s tools", url: "https://tools.myosint.training/" },
+                    { title: "bellingcat toolkit", url: "https://bellingcat.gitbook.io/toolkit" },
+                    { title: "reveng.ee", url: "https://reveng.ee/" },
+                ]},
+                { name: "Weitere Interessante Webseiten X", count: 1, links: [
+                    { title: "image extractor", url: "https://extract.pics/" },
+                ]},
+                { name: "Weitere M Glichkeiten", count: 11, links: [
+                    { title: "open source intelligence new zealand", url: "https://osint.rocks/" },
+                    { title: "https://gravatar.com/avatar/hier_md5-hash_der_e-mail-adresse_eintragen +.json für weitere daten", url: "https://gravatar.com/avatar/hier_md5-hash_der_e-mail-adresse_eintragen" },
+                    { title: "identificator (account gelöscht, weiterleitung auf epieos 06.01.23)", url: "https://identificator.space/search" },
+                    { title: "https://viewdns.info/", url: "https://viewdns.info/" },
+                    { title: "have i been pwned?", url: "https://haveibeenpwned.com/" },
+                    { title: "lullar com - suche eingrenzen profil per e-mail oder benutzername", url: "http://com.lullar.com/de" },
+                    { title: "intelligence x", url: "https://intelx.io" },
+                    { title: "emailrep.io", url: "https://emailrep.io" },
+                    { title: "google maps", url: "https://www.google.com/maps/contrib/105107656927929456474/reviews/@50.963215,6.9369856,14z/data=!4m3!8m2!3m1!1e1" },
+                    { title: "google hangouts", url: "https://hangouts.google.com/" },
+                    { title: "castrick", url: "https://castrickclues.com/" },
+                ]},
+                { name: "Whois & DNS", count: 66, links: [
+                    { title: "dnsdumpster", url: "http://dnsdumpster.com" },
+                    { title: "osint.sh", url: "https://osint.sh/" },
+                    { title: "geoip2 database demo | maxmind", url: "https://www.maxmind.com/en/geoip-demo" },
+                    { title: "ip address lookup hostip.info", url: "http://www.hostip.info/index.html" },
+                    { title: "what is my ip address? find your ip, whois and more on ip-adress.com", url: "https://www.ip-adress.com/" },
+                    { title: "trace an ip - our ip address locator &amp;amp; tracer can track any location", url: "https://www.ip-adress.com/ip-address/lookup" },
+                    { title: "netip.de - geolocation for internet services", url: "https://www.netip.de/" },
+                    { title: "ip address geolocation lookup demo | ip2location", url: "https://www.ip2location.com/demo/79.216.123.10" },
+                    { title: "ipstack - free ip geolocation api", url: "https://ipstack.com/" },
+                    { title: "ip geolocation api &amp;amp; free address database | db-ip", url: "https://db-ip.com/" },
+                    { title: "ip geolocation api with country information", url: "https://ipgeolocationapi.com/" },
+                    { title: "iana — root zone database", url: "https://www.iana.org/domains/root/db" },
+                    { title: "https://www.iana.org/whois", url: "https://www.iana.org/whois" },
+                    { title: "pentest-tools", url: "http://pentest-tools.com" },
+                    { title: "dnsdumpster", url: "http://dnsdumpster.com" },
+                    { title: "dnsstuff", url: "https://dnsstuff.com" },
+                    { title: "dnsdumpster.com - dns recon and research, find and lookup dns records", url: "https://dnsdumpster.com/" },
+                    { title: "find subdomains online — findsubdomains", url: "https://findsubdomains.com/" },
+                    { title: "https://crt.sh/", url: "https://crt.sh/" },
+                    { title: "https://dnsdumpster.com/", url: "https://dnsdumpster.com/" },
+                    { title: "subdomain finder", url: "https://osint.sh/subdomain/" },
+                    { title: "sputnik", url: "https://addons.mozilla.org/en-us/firefox/addon/sputnik-osint/" },
+                    { title: "domainiq - comprehensive domain name intelligence.", url: "https://www.domainiq.com/" },
+                    { title: "whois search, domain name, website, and ip tools - who.is", url: "https://who.is/" },
+                    { title: "free online network tools - traceroute, nslookup, dig, whois lookup, ping - ipv6", url: "https://centralops.net/co/" },
+                    { title: "whois lookup &amp;amp; ip | whois.net", url: "https://whois.net/" },
+                    { title: "whois search - domain name search | whois lookup | availability checker", url: "https://whois-search.com/" },
+                    { title: "reverse ip lookup - reverse ipv6 lookup", url: "https://www.pagesinventory.com/" },
+                    { title: "whois lookup, domain availability &amp;amp; ip search - domaintools", url: "https://whois.domaintools.com/" },
+                    { title: "icann", url: "https://www.icann.org/" },
+                    { title: "iana — whois service", url: "https://www.iana.org/whois" },
+                    { title: "domainnamen | weltweit größter domainnamen-registrar – godaddy de", url: "https://de.godaddy.com/" },
+                    { title: "domaintools: research", url: "http://research.domaintools.com" },
+                    { title: "denic eg: wir sind .de", url: "http://denic.de" },
+                    { title: "the largest whois database", url: "https://www.bigdomaindata.com/" },
+                    { title: "who.is", url: "http://who.is" },
+                    { title: "https://dnslytics.com", url: "https://dnslytics.com" },
+                    { title: "https://osint.sh/", url: "https://osint.sh/" },
+                    { title: "whoisology", url: "https://whoisology.com/" },
+                    { title: "betterwhois.com", url: "http://www.betterwhois.com/" },
+                    { title: "https://whois-search.com/", url: "https://whois-search.com/" },
+                    { title: "whoxy", url: "https://www.whoxy.com/" },
+                    { title: "whoisfreaks.com", url: "https://whoisfreaks.com/" },
+                    { title: "https://de.godaddy.com/whois", url: "https://de.godaddy.com/whois" },
+                    { title: "ip info", url: "https://ipinfo.io" },
+                    { title: "domainiq", url: "https://domainiq.com" },
+                    { title: "utrace.com", url: "http://utrace.com" },
+                    { title: "ip location finder", url: "http://iplocation.net" },
+                    { title: "centralops", url: "https://centralops.net" },
+                    { title: "geoip2 database demo", url: "https://www.maxmind.com/en/geoip-demo" },
+                    { title: "whois lookup, domain availability &amp;amp; ip search", url: "http://research.domaintools.com" },
+                    { title: "domain dossier", url: "https://centralops.net/co/domaindossier.aspx" },
+                    { title: "denic eg: wir sind .de", url: "http://denic.de" },
+                    { title: "domain tools", url: "https://domaintools.com" },
+                    { title: "domainhistory.net", url: "http://domainhistory.net" },
+                    { title: "who.is", url: "http://who.is" },
+                    { title: "whoxy", url: "https://www.whoxy.com" },
+                    { title: "domainbigdata", url: "https://domainbigdata.com" },
+                    { title: "dnslytics", url: "https://dnslytics.com" },
+                    { title: "pagesinventory.com", url: "http://pagesinventory.com" },
+                    { title: "network tools by yougetsignal.com", url: "https://yougetsignal.com" },
+                    { title: "whoxy", url: "https://whoxy.com" },
+                    { title: "robtex", url: "https://www.robtex.com" },
+                    { title: "dnsdb", url: "https://www.dnsdb.info" },
+                    { title: "viewdns.info", url: "https://viewdns.info" },
+                    { title: "censys", url: "https://censys.io" },
+                ]},
+                { name: "Zahlungsdienstleister", count: 2, links: [
+                    { title: "paypal", url: "https://www.paypal.com/de/signin" },
+                    { title: "klarna", url: "https://app.klarna.com/login?gclid=cjwkcaialo7ubraneiwa_vxq-whrou_2kvkf6iytbwdtudopp1igmkuwau8n1isoz_hwjubhpbtprxoc2omqavd_bwe" },
+                ]},
+                { name: "Zeitungssuche", count: 1, links: [
+                    { title: "newspaper map", url: "https://newspapermap.com/" },
+                ]},
+                { name: "Zu  Berpr Fen", count: 1, links: [
+                    { title: "wie man youtube videos automatisch transkribiert - de.hideout-lastation.com", url: "https://de.hideout-lastation.com/how-transcribe-youtube-videos-automatically" },
+                ]},
+                { name: "Zu Pr Fen X", count: 2, links: [
+                    { title: "yout", url: "https://yout.com/" },
+                    { title: "ytcomments.klostermann.ca", url: "http://ytcomments.klostermann.ca/" },
+                ]},
+                { name: "Zu Pr Fen Y", count: 5, links: [
+                    { title: "twiangulate", url: "http://twiangulate.com/search/" },
+                    { title: "twitter list copy", url: "http://projects.noahliebman.net/listcopy/connect.php" },
+                    { title: "twxplorer", url: "https://twxplorer.knightlab.com" },
+                    { title: "find my twitter id", url: "http://gettwitterid.com/" },
+                    { title: "facesaerch", url: "http://www.facesaerch.com" },
+                ]},
+
+            ];
+            
+            const grid = document.getElementById('categoriesGrid');
+            grid.innerHTML = '';
+            
+            categories.forEach((category, index) => {
+                const card = document.createElement('div');
+                card.className = 'category-card';
+                card.setAttribute('data-category', category.name);
+                
+                let linksHTML = '';
+                category.links.forEach(link => {
+                    linksHTML += '<div class="link-item"><a href="' + link.url + '" target="_blank" rel="noopener noreferrer">' + link.title + '</a><div class="link-url">' + link.url + '</div></div>';
+                });
+                
+                card.innerHTML = '<div class="category-header"><h3 class="category-title">' + category.name + '</h3><span class="category-count" data-original-count="' + category.count + '">' + category.count + '</span></div><div class="links-container">' + linksHTML + '</div>';
+                grid.appendChild(card);
+            });
+        }
+        
+        function filterLinks() {
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            const categoryCards = document.querySelectorAll('.category-card');
+            let hasResults = false;
+            
+            categoryCards.forEach(card => {
+                const category = card.getAttribute('data-category').toLowerCase();
+                const linkItems = card.querySelectorAll('.link-item');
+                const countElement = card.querySelector('.category-count');
+                const originalCount = parseInt(countElement.getAttribute('data-original-count'));
+                let categoryHasMatch = false;
+                let visibleLinksInCategory = 0;
+                
+                if (category.includes(searchTerm)) {
+                    categoryHasMatch = true;
+                }
+                
+                linkItems.forEach(item => {
+                    const title = item.textContent.toLowerCase();
+                    const url = item.querySelector('.link-url').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || url.includes(searchTerm) || categoryHasMatch) {
+                        item.style.display = 'block';
+                        visibleLinksInCategory++;
+                        hasResults = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                if (searchTerm !== '') {
+                    countElement.textContent = visibleLinksInCategory;
+                    countElement.classList.add('search-active');
+                } else {
+                    countElement.textContent = originalCount;
+                    countElement.classList.remove('search-active');
+                }
+                
+                if (visibleLinksInCategory === 0 && searchTerm !== '') {
+                    card.style.display = 'none';
+                } else {
+                    card.style.display = 'block';
+                }
+            });
+            
+            const existingNoResults = document.getElementById('noResults');
+            if (existingNoResults) {
+                existingNoResults.remove();
+            }
+            
+            if (!hasResults && searchTerm !== '') {
+                const noResultsDiv = document.createElement('div');
+                noResultsDiv.id = 'noResults';
+                noResultsDiv.className = 'no-results';
+                noResultsDiv.innerHTML = '<div style="font-size: 4em; margin-bottom: 20px;">ðŸ”</div><h3>Keine Ergebnisse gefunden</h3><p>Keine Links entsprechen Ihrer Suche nach "' + searchTerm + '"</p>';
+                document.getElementById('categoriesGrid').appendChild(noResultsDiv);
+            }
+        }
+        
+        document.body.style.overflow = 'hidden';
+    </script>
+</body>
+</html>
